@@ -10,3 +10,5 @@
   - A commit is a save point in git. As files are created or modified in git, they need to be manually committed to the repository in order to track and save the changes. A good commit message is one that is descriptive to the specific thing that was added or modified to a file for that commit. Commits should happen often enough that these messages are short and straightforward.
 * What is a merge conflict?
   - A merge conflict can arise when multiple branches are attempted to be merged, but the master branch is no longer the same as it was when the other branch was created. This can happen if the master has received an update or new feature between the time a branch was created and when it is attempted to be merged back into the master. GitHub or the local repository won't know how to merge the differing code bases correctly, and so manual correction may be required.
+
+## This one is for you, Glenna!
