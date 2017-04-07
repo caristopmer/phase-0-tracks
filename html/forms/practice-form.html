@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--Pair programming for 2.4, Chris McMenomy and Andrea Scott-->
+<html>
+<head>
+  <title>Order some lunch</title>
+</head>
+<body>
+<form action="success.html" method="post">
+<div>
+  <label>What do you want for lunch?</label>
+  <select name="lunch">
+    <option value="hamburger">Hamburger</option>
+    <option value="hotdog">Hot dog</option>
+    <option value="milkshake">Milkshake</option>
+    <option value="kale">Kale</option>
+  </select>
+</div>
+<div>
+  <label>What extras do you want?</label>
+  <textarea name="extras" maxlength="1000" placeholder="Example: Mustard, mayo, massage my kale!"></textarea>
+</div>
+<div>
+  <label>When do you want your lunch?</label>
+  <input type ="date" name="date">
+</div>
+<div>
+  <label>What's your name?</label>
+  <input type="text" name="name">
+</div>
+<div>
+  <label>Are you going to pay for your lunch?</label>
+  <input type="checkbox" name="payment">
+</div>
+<p></p>
+<button type="Submit">Submit Order!</button>
+</form>
+</body>
+</html>
