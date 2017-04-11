@@ -1,0 +1,28 @@
+/*--
+* {
+  border: 1px solid black;
+}
+--*/
+
+div.wrapper {
+  position: relative;
+  left: 350px;
+  top: 50px;
+}
+
+#octopus {
+  margin-left: 50px;
+  margin-top: 100px;
+}
+
+#hat {
+  position: absolute;
+  bottom: 220px;
+  left: 35px;
+}
+
+#glasses {
+  position: absolute;
+  bottom: 135px;
+  left: 92px;
+}
