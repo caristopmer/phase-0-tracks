@@ -1,3 +1,7 @@
+
+/* Pair Programmed: Chris McMenomy 
+& Wan Tsui on 4/13 */
+
 blockquote {
   border-left: 5px solid blue;
   padding: 15px;
@@ -49,3 +53,28 @@ main {
   vertical-align: text-top;
   padding-left: .5%;
 }
+
+@media screen and (max-width: 600px) {
+  main>h1 {
+    font-size: 1em;
+  }
+
+  main>figure>img {
+    width: 200px;
+    border-radius: 50px;
+  }
+
+  section#external-links {
+    font-size: .5em;
+    background-color: lightgrey;
+  }
+}
+
+
+/*
+@media screen and (max-width: 500px) {
+  body {
+    background-color: hotpink;
+  }
+}
+*/
