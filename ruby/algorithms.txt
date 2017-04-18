@@ -13,6 +13,17 @@ Robot Elevator Algorithm:
       - In this case, move back to initial button at bottom left of button panel, and locate button one space above the current button. Repeat process of inspecting buttons across row, and moving to row above, until button with the number of the desired floor if located and pressed.
 - Locate floor display above button panel.
    - When number displayed here is equal to the number of desired floor, wait for elevator doors to open.
-   - Once elevator doors are open, proceed through open elevator doors until outside elevator. Destination floor has been reached.
+- Once elevator doors are open, proceed through open elevator doors until outside elevator. Destination floor has been reached.
 
 
+Brewing Morning Coffee Algorithm:
+- Locate coffee maker on left counter in kitchen.
+- Lift lid on top of coffee maker. Remove basket from inside coffee maker.
+- Invert basket over trash can to the left of counter to dump out old grounds/filter.
+- Take basket to sink, located to the right of the coffee maker. Push water faucet handle up until water starts pouring out of water faucet. Fill basket with water and invert several times to rinse out basket. Push water faucet handle down until water stops pouring from water faucet. Return basket to coffee maker, leaving coffee maker lid open.
+- Locate coffee pitcher sitting in coffee maker. Repeat step above, with coffee pitcher instead of basket, to rinse coffee pitcher.
+- Push water faucet handle up and to the right. Place coffee pitcher underneath faucet and  fill with water until water reached MAX line of coffee pitcher. Push water faucet handle down until water stop pouring from water faucet.
+- Return to coffee maker with coffee pitcher full of water. Pour contents of pitcher into water reservoir in the top of open coffee maker until pitcher is empty. Place empty coffee pitcher back into place in coffee maker.
+- Locate white coffee filter
+- Locate bag of coffee grounds on counter to the left of coffee maker.
+- Bend wire tabs on sides of coffee grounds bag until straight. Unroll coffee grounds bag until top is open.  
