@@ -1,0 +1,18 @@
+Robot Elevator Algorithm:
+- Locate and note indicator of current floor. This will be located next to elevator door.
+- Elevator call buttons are on the wall to the left or right of the elevator door.
+   - If current floor < desired floor, press top call button or call button with an up arrow on it.
+   - If current floor > desired floor, press bottom call button or call button with a down arrow on it.
+   - Otherwise, do nothing as you are already on your desired floor.
+- Wait for elevator door to open, and proceed through open elevator doors until inside elevator.
+- Button panel is located on either the left or right walls next to the elevator door on the inside of the elevator. On button panel:
+   - Locate bottom left button on panel.
+   - If number on button is equal to desired floor, push the button.
+   - Otherwise, locate button one space right of the current button. Repeat step above.
+   - Otherwise, repeat this process until there is no button to inspect one space right of current button.
+      - In this case, move back to initial button at bottom left of button panel, and locate button one space above the current button. Repeat process of inspecting buttons across row, and moving to row above, until button with the number of the desired floor if located and pressed.
+- Locate floor display above button panel.
+   - When number displayed here is equal to the number of desired floor, wait for elevator doors to open.
+   - Once elevator doors are open, proceed through open elevator doors until outside elevator. Destination floor has been reached.
+
+
