@@ -1,4 +1,5 @@
 Robot Elevator Algorithm:
+
 - Locate and note indicator of current floor. This will be located next to elevator door.
 - Elevator call buttons are on the wall to the left or right of the elevator door.
    - If current floor < desired floor, press top call button or call button with an up arrow on it.
@@ -16,7 +17,9 @@ Robot Elevator Algorithm:
 - Once elevator doors are open, proceed through open elevator doors until outside elevator. Destination floor has been reached.
 
 
+
 Brewing Morning Coffee Algorithm:
+
 - Locate coffee maker on left counter in kitchen.
 - Lift lid on top of coffee maker. Remove basket from inside coffee maker.
 - Invert basket over trash can to the left of counter to dump out old grounds/filter.
@@ -24,6 +27,10 @@ Brewing Morning Coffee Algorithm:
 - Locate coffee pitcher sitting in coffee maker. Repeat step above, with coffee pitcher instead of basket, to rinse coffee pitcher.
 - Push water faucet handle up and to the right. Place coffee pitcher underneath faucet and  fill with water until water reached MAX line of coffee pitcher. Push water faucet handle down until water stop pouring from water faucet.
 - Return to coffee maker with coffee pitcher full of water. Pour contents of pitcher into water reservoir in the top of open coffee maker until pitcher is empty. Place empty coffee pitcher back into place in coffee maker.
-- Locate white coffee filter
+- Locate white coffee filter on the counter to the left of coffee maker. Insert 1 coffee filter into coffee maker basket to line the inside of basket.
 - Locate bag of coffee grounds on counter to the left of coffee maker.
-- Bend wire tabs on sides of coffee grounds bag until straight. Unroll coffee grounds bag until top is open.  
+- Bend wire tabs on sides of coffee grounds bag until wire tabs are straight. Unroll coffee grounds bag until top is open.
+- Tilt bag of coffee grounds over coffee filter in basket until coffee grounds begin to pour out into coffee filter. Continue until coffee filter is half full of coffee grounds.
+- Place bag of coffee grounds back on counter to the left of coffee maker. Roll coffee grounds bag closed and secure by bending wire tabs around the roll.
+- Close lid of coffee maker. Press button at base of coffee maker that has the word “brew” written on it.
+- Wait for coffee to complete brewing before enjoying.
