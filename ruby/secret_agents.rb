@@ -12,7 +12,7 @@ def encrypt(pw)
     pw[index] = pw[index].next
     index += 1
   end
-  p pw
+  # p pw
 end
 
 encrypt("password")
@@ -31,6 +31,13 @@ encrypt("password")
 
 def decrypt(pw)
   index = 0
+  alpha = "abcdefghijklmnopqrstuvwxyz"
   while index < pw.length
+    pw[index] = alpha[alpha.index(pw[index]) - 1]
+    index += 1
+  end
+  # p pw
 end
+
+decrypt(encrypt("password"))
 
