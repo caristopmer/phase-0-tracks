@@ -1,3 +1,6 @@
+# Pair programmed by Chris McMenomy & Josh Nickell
+# 4/19/17
+
 =begin Encrypt
 - take in password string, password
 - set index to 0
