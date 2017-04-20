@@ -9,13 +9,17 @@
 def encrypt(pw)
   index = 0
   while index < pw.length
+    if pw[index] == "z"
+      pw[index] = "a"
+      index += 1     
+    end
     pw[index] = pw[index].next
     index += 1
   end
-  # p pw
+  pw
 end
 
-encrypt("password")
+# puts encrypt("zed")
 
 
 =begin Decrypt
@@ -36,8 +40,8 @@ def decrypt(pw)
     pw[index] = alpha[alpha.index(pw[index]) - 1]
     index += 1
   end
-  # p pw
+  pw
 end
 
-decrypt(encrypt("password"))
+puts decrypt("afe")
 
