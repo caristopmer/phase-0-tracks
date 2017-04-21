@@ -1,9 +1,9 @@
-puts "Thank you for taking this new employee survey!"
+puts "Thank you for taking our new employee survey!"
 
 puts "What is your name?"
 name = gets.chomp
 
-puts "How old are you?"
+puts "How old are you, or how old will you be turning this year?"
 age = gets.chomp.to_i
 
 puts "What year were you born?"
@@ -28,8 +28,22 @@ elsif health_ins == "n"
   health_ins = false
 end
 
+#If statements to analyze responses to determine likelihood of vampireness.
 
+result = "Results Inconclusive."
 
+if age == by_age && (gbread || health_ins)
+  result = "Probably not a vampire."
+end
+if age != by_age && (gbread == false || health_ins == false)
+  result = "Probably a vampire."
+end
+if age != by_age && gbread == false && health_ins == false
+  result = "Almost certainly a vampire."
+end
+if name == "Drake Cula" || name == "Tu Fang"
+  result = "Definitely a vampire."
+end
 
 puts "Survey results:"
 puts result
