@@ -24,3 +24,9 @@ if health_ins == "y"
 elsif health_ins == "n"
   health_ins = false
 end
+
+p name
+p age
+p birth_year
+p gbread
+p health_ins
