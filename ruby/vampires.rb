@@ -30,22 +30,34 @@ end
 
 
 
+
+puts "Survey results:"
+puts result
+
+=begin My entirely too complicated initial attempt at this...
 loop_controller = true
-met1
-met2
-met3
-met4
+met1 = false
+met2 = false
+met3 = false
+met4 = false
 
 while loop_controller == true
-  if age == by_age && (gbread || health_ins)
+  if age == by_age && (gbread || health_ins) && met1 == false
     result = "Probably not a vampire."
-  elsif age != by_age && (gbread == false || health_ins == false)
+    met1 = true
+  elsif age != by_age && (gbread == false || health_ins == false) && met2 == false
     result = "Probably a vampire."
-  elsif age != by_age && gbread == false && health_ins == false
+    met2 = true
+  elsif age != by_age && gbread == false && health_ins == false && met3 == false
     result = "Almost certainly a vampire."
-  elsif name == "Drake Cula" || name == "Tu Fang"
+    met3 = true
+  elsif name == "Drake Cula" || name == "Tu Fang" && met4 == false
     result = "Definitely a vampire."
+    met4 = true
+    break
   else
     result = "Results Inconclusive."
+    loop_controller = false
   end
 end
+=end
