@@ -4,6 +4,8 @@ n = gets.chomp.to_i
 while n > 0
   puts "Thank you for taking our new employee survey!"
   
+  # Questions to collect data from the employee.
+
   puts "What is your name?"
   name = gets.chomp
   
@@ -31,6 +33,19 @@ while n > 0
   elsif health_ins == "n"
     health_ins = false
   end
+
+  puts "Please input any allergies you have. Type done when complete."
+  sun_allergy = false
+
+  loop do
+    allergy = gets.chomp
+    if allergy == "sunshine"
+      sun_allergy = true
+      break
+    elsif allergy == "done"
+      break
+    end
+  end
   
   #If statements to analyze responses to determine likelihood of vampireness.
   
@@ -45,10 +60,12 @@ while n > 0
   if age != by_age && gbread == false && health_ins == false
     result = "Almost certainly a vampire."
   end
-  if name == "Drake Cula" || name == "Tu Fang"
+  if name == "Drake Cula" || name == "Tu Fang" || sun_allergy
     result = "Definitely a vampire."
   end
   
+  puts "All done! Thank you for your time. Please give us a moment to process your results..."
+  sleep(2)
   puts "Survey results:"
   puts result
   n -= 1
