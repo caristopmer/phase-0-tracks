@@ -1,54 +1,64 @@
-puts "Thank you for taking our new employee survey!"
+puts "How many employees will be processed?"
+n = gets.chomp.to_i
 
-puts "What is your name?"
-name = gets.chomp
-
-puts "How old are you, or how old will you be turning this year?"
-age = gets.chomp.to_i
-
-puts "What year were you born?"
-birth_year = gets.chomp.to_i
-by_age = 2017 - birth_year
-
-puts "Our company cafeteria serves garlic bread. Should we order some for you? (y/n)"
-gbread = gets.chomp
-
-if gbread == "y"
-  gbread = true
-elsif gbread == "n"
-  gbread = false
+while n > 0
+  puts "Thank you for taking our new employee survey!"
+  
+  puts "What is your name?"
+  name = gets.chomp
+  
+  puts "How old are you, or how old will you be turning this year?"
+  age = gets.chomp.to_i
+  
+  puts "What year were you born?"
+  birth_year = gets.chomp.to_i
+  by_age = 2017 - birth_year
+  
+  puts "Our company cafeteria serves garlic bread. Should we order some for you? (y/n)"
+  gbread = gets.chomp
+  
+  if gbread == "y"
+    gbread = true
+  elsif gbread == "n"
+    gbread = false
+  end
+  
+  puts "Would you like to enroll in the company's health insurance?"
+  health_ins = gets.chomp
+  
+  if health_ins == "y"
+    health_ins = true
+  elsif health_ins == "n"
+    health_ins = false
+  end
+  
+  #If statements to analyze responses to determine likelihood of vampireness.
+  
+  result = "Results Inconclusive."
+  
+  if age == by_age && (gbread || health_ins)
+    result = "Probably not a vampire."
+  end
+  if age != by_age && (gbread == false || health_ins == false)
+    result = "Probably a vampire."
+  end
+  if age != by_age && gbread == false && health_ins == false
+    result = "Almost certainly a vampire."
+  end
+  if name == "Drake Cula" || name == "Tu Fang"
+    result = "Definitely a vampire."
+  end
+  
+  puts "Survey results:"
+  puts result
+  n -= 1
 end
 
-puts "Would you like to enroll in the company's health insurance?"
-health_ins = gets.chomp
 
-if health_ins == "y"
-  health_ins = true
-elsif health_ins == "n"
-  health_ins = false
-end
 
-#If statements to analyze responses to determine likelihood of vampireness.
 
-result = "Results Inconclusive."
+=begin My entirely too complicated initial attempt at release 2...
 
-if age == by_age && (gbread || health_ins)
-  result = "Probably not a vampire."
-end
-if age != by_age && (gbread == false || health_ins == false)
-  result = "Probably a vampire."
-end
-if age != by_age && gbread == false && health_ins == false
-  result = "Almost certainly a vampire."
-end
-if name == "Drake Cula" || name == "Tu Fang"
-  result = "Definitely a vampire."
-end
-
-puts "Survey results:"
-puts result
-
-=begin My entirely too complicated initial attempt at this...
 loop_controller = true
 met1 = false
 met2 = false
