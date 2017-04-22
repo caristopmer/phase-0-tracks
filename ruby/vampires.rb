@@ -71,10 +71,9 @@ while n > 0
   n -= 1
 end
 
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 
-
-
-=begin My entirely too complicated initial attempt at release 2...
+=begin My entirely too complicated initial attempt at release 2... it worked though!
 
 loop_controller = true
 met1 = false
