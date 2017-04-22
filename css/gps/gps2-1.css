@@ -1,3 +1,54 @@
 body {
-  background-color: orange;
+  background-color:#C4BB9B;
+  min-width: 670px;
+  font-family: 'Asar', serif;
+}
+
+header {
+  background-color: tan;
+  background-image: url("http://15809-presscdn-0-93.pagely.netdna-cdn.com/wp-content/uploads/2016/02/MTIyMjk0NTQwMTU2NjI4MjQ5.jpg");
+  height: auto;
+  background-repeat: repeat-x;
+  background-position: top; center;
+  color: white;
+  padding: 2%;
+  background-size: 100% 100%;
+}
+
+header>p {
+  color: yellow;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+h1 {
+  height: 220px;
+}
+
+h2 {
+  color: #554000;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+footer {
+  background-color: beige;
+  text-align: center;
+  position: relative;
+  padding: 50px;
+}
+
+.column-1, .column-2 {
+  display: inline-block;
+  vertical-align: top;
+  width: 44.5%;
+  padding-left: 1%;
+  margin: 2%;
+}
+
+.column-1 {
+  background-color: #F7DD7F;
+}
+
+.column-2 {
+  background-color: #D1B659;
 }
