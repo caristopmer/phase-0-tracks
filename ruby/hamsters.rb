@@ -1,5 +1,5 @@
 # Challenge 4.3
-# Pair Programmed:
+# Pair Programmed 4/18/17:
 # 1. Chris McMenomy
 # 2. Preet Dha
 
