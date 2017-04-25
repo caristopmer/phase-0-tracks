@@ -46,3 +46,66 @@ p zoo_animals
 visitor.each do |key, value|
   puts "#{key}: #{value}"
 end
+
+#Release 2
+
+#Array
+random_number = [ 1, 5, 55, -6, 222 ]
+
+#1
+puts random_number.delete_if { |x| x > 50 }
+p random_number
+#2
+random_number = [ 1, 5, 55, -6, 222 ]
+puts random_number.keep_if { |x| x > 200 }
+p random_number
+#3
+random_number = [ 1, 5, 55, -6, 222 ]
+puts random_number.select { |x| x.even? }
+p random_number
+#4
+puts random_number.drop_while { |i| i < 2 }
+p random_number
+
+
+#Hash
+student_data = {
+  "a" => 8,
+  "b" => 82,
+  "c" => 91,
+  "d" => 100
+}
+
+#1
+puts student_data.delete_if { |key, value| key < "c" }
+p student_data
+
+student_data = {
+  "a" => 8,
+  "b" => 82,
+  "c" => 91,
+  "d" => 100
+}
+
+#2
+puts student_data.keep_if { |key, value| value > 80 }
+p student_data
+
+student_data = {
+  "a" => 8,
+  "b" => 82,
+  "c" => 91,
+  "d" => 100
+}
+
+#3
+puts student_data.select { |key, value| key == "b" || key == "c" }
+p student_data
+
+#4
+student_data = {
+  "a" => 8,
+  "b" => 82,
+  "c" => 91,
+  "d" => 100
+}
