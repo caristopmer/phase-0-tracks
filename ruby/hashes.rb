@@ -75,4 +75,5 @@ if change != :none
   design_hash[change] = update
 end
 
+p design_hash
 puts design_hash
