@@ -6,7 +6,7 @@ train = {
   engine: {
     crew: {
       conductor: "David",
-      engineer: "Joe",
+      engineer: "Joe"
     },
     contents: ["coal", "shovel", "instruments"],
     color: "blue"
@@ -43,3 +43,22 @@ train = {
     color: "red"
   }
 }
+
+
+#Driver code to demonstrate accessing of nested data.
+
+p train[:engine][:crew][:engineer]
+
+p train[:freight_car][:contents][:compartment_2]
+
+p train[:caboose][:contents][:trunk].length
+
+p train[:sleeping_car][:open_beds]
+
+p train[:passenger_car][:passengers].last.downcase
+
+puts train.keys
+
+p train[:caboose][:color]
+
+p train[:freight_car]
