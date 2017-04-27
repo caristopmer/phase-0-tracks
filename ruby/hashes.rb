@@ -42,9 +42,8 @@ puts "What decor theme would you like to follow?"
 design_hash[:decor_theme] = gets.chomp
 
 puts "What are your three favorite colors? (Please enter one at a time.)"
-design_hash[:fav_colors] << gets.chomp
-design_hash[:fav_colors] << gets.chomp
-design_hash[:fav_colors] << gets.chomp
+
+3.times { design_hash[:fav_colors] << gets.chomp }
 
 puts "Do you like wood floors?"
 floors = gets.chomp
