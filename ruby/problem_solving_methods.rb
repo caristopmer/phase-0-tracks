@@ -23,3 +23,20 @@ end
 array = [1, 2, 3, 4, 5, 6]
 
 p search_array(array, 3)
+
+# Fibonacci Method
+#
+# Arguments: int number of terms in the fibonacci array.
+# 
+#
+
+def fib(n)
+  array = [0, 1]
+  (n-2).times { array.push(array[-1] + array[-2])}
+  array
+end
+
+p fib(10)
+p fib(100)
+
+p fib(100).last == 218922995834555169026
