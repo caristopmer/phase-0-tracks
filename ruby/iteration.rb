@@ -109,3 +109,11 @@ student_data = {
   "c" => 91,
   "d" => 100
 }
+
+puts student_data.delete_if { |key, value| student_data.length > 1 }
+p student_data
+
+# I know this isn't an ideal way to do this, but this seems to be at least somewhat meeting the
+# criteria of the assignment since it was indicated we might not find a perfectly working
+# method for this one. The delete_if method will continue to delete hash elements until
+# the hash length indicated is reached.
