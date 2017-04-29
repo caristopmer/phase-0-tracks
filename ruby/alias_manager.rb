@@ -26,12 +26,20 @@ end
 
 # Returns the character after the passed in vowel in the $vowels string.
 def v_swap(vowel)
-  vowel = $vowels[($vowels.index(vowel) + 1)]
+  if vowel == $vowels.split('').last
+    vowel = $vowels.split('').first
+  else
+    vowel = $vowels[($vowels.index(vowel) + 1)]
+  end
 end
 
 # Returns the character after the passed in consonant in the $consonants string.
 def c_swap(consonant)
-  consonant = $consonants[($consonants.index(consonant) + 1)]
+  if consonant == $consonants.split('').last
+    consonant = $consonants.split('').first
+  else
+    consonant = $consonants[($consonants.index(consonant) + 1)]
+  end
 end
 
 def alias_maker(name)
@@ -51,6 +59,5 @@ def alias_maker(name)
   alias_full = alias_full.join(' ')
 end
 
-
-
-p alias_maker("Chrus McMenomz")
+p alias_maker("Chris McMenomy")
+p alias_maker("Felicia Torres")
