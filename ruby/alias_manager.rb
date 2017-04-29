@@ -15,18 +15,27 @@
   - Return the completed alias as a string.
 =end
 
-def alias_maker(name)
-  
+# Returns an array of first and last name as separate strings, with last name first.
+def name_swap(name)
+  reversed_name = name.split(' ')
+  reversed_name.insert(0, reversed_name.delete_at(1))
 end
-
-
 
 def v_swap(vowel)
 
 end
 
-
-
 def c_swap(consonant)
 
 end
+
+
+def alias_maker(name)
+  alias_full = name_swap(name)
+
+
+end
+
+
+
+p alias_maker("Chris McMenomy")
