@@ -61,16 +61,26 @@ end
 
 # Begin Driver Code
 
+  spy_names = []
+  spy_aliases = []
+  counter = 0
   puts "Welcome to the Alias Manager 9000!"
-  
+
 loop do
   puts "Please enter the name you would like to generate an alias for: (Enter 'quit' to quit!)"
-  spy_name = gets.chomp
-  if spy_name.downcase == "quit"
+  spy_names << gets.chomp
+  if spy_names[counter].downcase == "quit"
     puts "Thank you for using the Alias Manager 9000!"
+    puts "Session Summary:"
+    while counter >= 0
+      puts "#{spy_names[counter]} is also known as #{spy_aliases[counter]}."
+      counter -= 1
+    end
+    puts "Have a great day!"
     break
   end
-  spy_alias = alias_maker(spy_name)
+  spy_aliases << alias_maker(spy_names[counter])
   puts "The alias for this name is:"
-  puts spy_alias
+  puts spy_aliases[counter]
+  counter += 1
 end
