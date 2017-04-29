@@ -59,5 +59,18 @@ def alias_maker(name)
   alias_full = alias_full.join(' ')
 end
 
-p alias_maker("Chris McMenomy")
-p alias_maker("Felicia Torres")
+# Begin Driver Code
+
+  puts "Welcome to the Alias Manager 9000!"
+  
+loop do
+  puts "Please enter the name you would like to generate an alias for: (Enter 'quit' to quit!)"
+  spy_name = gets.chomp
+  if spy_name.downcase == "quit"
+    puts "Thank you for using the Alias Manager 9000!"
+    break
+  end
+  spy_alias = alias_maker(spy_name)
+  puts "The alias for this name is:"
+  puts spy_alias
+end
