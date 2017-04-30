@@ -50,18 +50,36 @@ p insert_sort(zombie_apocalypse_supplies)
 # 3. Create a method to see if a particular item (string) is in the
 # zombie_apocalypse_supplies. Do not use any special built-in methods.
 # For instance: are boots in your list of supplies?
-# ----
 
+def have_item?(item, array)
+  item_found = false
+  array.each do |item2|
+    if item2 == item
+      item_found = true
+    end
+  end
+  item_found
+end
 
-
-
-
-
+p have_item?("shotgun", zombie_apocalypse_supplies)
+p have_item?("wig", zombie_apocalypse_supplies)
+p have_item?("compass", zombie_apocalypse_supplies)
+p have_item?("popcorn", zombie_apocalypse_supplies)
 
 # 4. You can't carry too many things, you've only got room in your pack for 5.
 # Remove items in your zombie_apocalypse_supplies in any way you'd like,
 # leaving only 5. Do not use any special built-in methods.
-# ----
+
+def bag_dumper(arr)
+  arr.each do |item|
+    if arr.length > 5
+      arr.delete_at(arr.length - 1)
+    end
+  end
+  arr
+end
+
+p bag_dumper(zombie_apocalypse_supplies)
 
 # 5. You found another survivor! This means you can combine your supplies.
 # Create a new combined supplies list out of your zombie_apocalypse_supplies
