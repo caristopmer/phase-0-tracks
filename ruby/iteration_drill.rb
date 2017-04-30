@@ -113,7 +113,21 @@ extinct_animals = {
 
 # 1. Iterate through extinct_animals hash, printing each key/value pair
 # with a dash in between the key and value, and an asterisk between each pair.
-# ----
+
+def hash_print(hash)
+  hash.each do |k, v|
+    if k != k.last
+      print k + " - " + v + " * "
+    else
+      print item
+    end
+  end
+end
+
+asterisk_print(zombie_apocalypse_supplies)
+puts ""
+
+
 
 # 2. Keep only animals in extinct_animals if they were extinct before
 # the year 2000. Do not use any special built-in methods.
