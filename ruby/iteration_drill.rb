@@ -8,7 +8,7 @@ zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars",
 
 def asterisk_print(arr)
   arr.each do |item|
-    if item != arr.last
+    if item.downcase != arr.last.downcase
       print item + " * "
     else
       print item
@@ -116,28 +116,52 @@ extinct_animals = {
 
 def hash_print(hash)
   hash.each do |k, v|
-    if k != k.last
-      print k + " - " + v + " * "
+    if k.downcase != hash.keys.last.downcase
+      print k + " - " + v.to_s + " * "
     else
-      print item
+      print k + " - " + v.to_s
     end
   end
 end
 
-asterisk_print(zombie_apocalypse_supplies)
+hash_print(extinct_animals)
 puts ""
-
-
 
 # 2. Keep only animals in extinct_animals if they were extinct before
 # the year 2000. Do not use any special built-in methods.
-# ----
 
+def extinct_pre2000(hash)
+  hash.each do |animal, year|
+    if year >= 2000
+      hash.delete(animal)
+    end
+  end
+  hash
+end
+
+p extinct_animals
+p extinct_pre2000(extinct_animals)
+
+
+extinct_animals = {
+  "Tasmanian Tiger" => 1936,
+  "Eastern Hare Wallaby" => 1890,
+  "Dodo" => 1662,
+  "Pyrenean Ibex" => 2000,
+  "Passenger Pigeon" => 1914,
+  "West African Black Rhinoceros" => 2011,
+  "Laysan Crake" => 1923
+}
 # 3. Our calculations were completely off, turns out all of those animals went
 # extinct 3 years before the date provided. Update the values in extinct_animals
 # so they accurately reflect what year the animal went extinct.
 # Do not use any special built-in methods.
-# ----
+
+
+
+
+
+
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
 # Check if they're included in extinct_animals, one by one:
