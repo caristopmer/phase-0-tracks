@@ -46,7 +46,8 @@ end
 
 p insert_sort(zombie_apocalypse_supplies)
 
-
+zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars",
+                              "shotgun", "compass", "CB radio", "batteries"]
 # 3. Create a method to see if a particular item (string) is in the
 # zombie_apocalypse_supplies. Do not use any special built-in methods.
 # For instance: are boots in your list of supplies?
@@ -81,6 +82,8 @@ end
 
 p bag_dumper(zombie_apocalypse_supplies)
 
+zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars",
+                              "shotgun", "compass", "CB radio", "batteries"]
 # 5. You found another survivor! This means you can combine your supplies.
 # Create a new combined supplies list out of your zombie_apocalypse_supplies
 # and their supplies below. You should get rid of any duplicate items.
@@ -88,7 +91,13 @@ p bag_dumper(zombie_apocalypse_supplies)
 # documentation for Arrays.
 other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove",
                             "solar battery", "flashlight"]
-# ----
+
+def supply_combiner(arr1, arr2)
+  (arr1 + arr2).uniq
+end
+
+p supply_combiner(zombie_apocalypse_supplies, other_survivor_supplies)
+
 
 # Hash Drills
 
