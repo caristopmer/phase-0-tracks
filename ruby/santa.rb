@@ -22,12 +22,11 @@ class Santa
   end
 
   def about
-    puts "-----"
     puts "Gender: #{@gender}"
     puts "Ethnicity: #{@ethnicity}"
     puts "Reindeer ranking: #{@reindeer_ranking}"
     puts "Age: #{@age}"
-    puts "-----"
+    puts "---------------"
   end
 
   def celebrate_birthday
@@ -40,36 +39,49 @@ class Santa
 
 end
 
+# Release 4 Driver Code
 
-# Driver Code
+santa_number = 1000
+santas = []
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A", "mystery gender"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A", "Martian"]
+
+santa_number.times do |this_santa|
+  santas << Santa.new(example_genders[rand(example_genders.length)], example_ethnicities[rand(example_ethnicities.length)])
+  santas[this_santa].age = rand(140)
+  santas[this_santa].about
+end
+
+
+# Driver Code Releases 1-3
 
 # santa1 = Santa.new
 # santa1.speak
 # santa1.eat_milk_and_cookies("Oreo")
 
-santas = []
-ex_genders = ["male", "female", "agender", "bi-gender", "gendermorphus"]
-ex_ethnicities = ["Hispanic", "Black", "White", "prefer not to say", "Martian"]
+# santas = []
+# ex_genders = ["male", "female", "agender", "bi-gender", "gendermorphus"]
+# ex_ethnicities = ["Hispanic", "Black", "White", "prefer not to say", "Martian"]
 
-# Creating diverse instances of every combination of gender and ethnicity.
-ex_genders.each do |gender|
-  ex_ethnicities.each do |eth|
-    santas << Santa.new(gender, eth)
-  end
-end
-
-# santas.each do |santa|
-#   santa.about
+# # Creating diverse instances of every combination of gender and ethnicity.
+# ex_genders.each do |gender|
+#   ex_ethnicities.each do |eth|
+#     santas << Santa.new(gender, eth)
+#   end
 # end
 
-p santas[12].age
-p santas[12].ethnicity
+# # santas.each do |santa|
+# #   santa.about
+# # end
 
-santas[12].about
-santas[12].celebrate_birthday
-santas[12].get_mad_at("Dasher")
-santas[12].gender = "Mystery Gender"
-santas[12].about
+# p santas[12].age
+# p santas[12].ethnicity
+
+# santas[12].about
+# santas[12].celebrate_birthday
+# santas[12].get_mad_at("Dasher")
+# santas[12].gender = "Mystery Gender"
+# santas[12].about
 
 # santas[12].age = 99
 # p santas[12].age
