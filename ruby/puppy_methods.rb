@@ -1,5 +1,9 @@
 class Puppy
 
+  def initialize
+    puts "Initializing new puppy instance..."
+  end
+
   def fetch(toy)
     puts "I brought back the #{toy}!"
     toy
@@ -19,7 +23,7 @@ class Puppy
 
   def puppy_sit
     puts "The puppy sat down!"
-  end
+  end  
 end
 
 # Driver Code
