@@ -8,7 +8,6 @@ class Santa
     @ethnicity = ethnicity
     @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
     @age = 0
-
   end
 
   def speak
@@ -26,6 +25,28 @@ class Santa
     puts "Reindeer ranking: #{@reindeer_ranking}"
     puts "Age: #{@age}"
     puts "-----"
+  end
+
+  # Setter Methods
+  def celebrate_birthday
+    @age += 1
+  end
+
+  def get_mad_at(reindeer)
+    @reindeer_ranking << @reindeer_ranking.delete(reindeer)    
+  end
+
+  def gender=(new_gender)
+    @gender = new_gender
+  end
+
+  # Getter Methods
+  def age
+    @age
+  end
+
+  def ethnicity
+    @ethnicity
   end
 
 end
@@ -48,6 +69,15 @@ ex_genders.each do |gender|
   end
 end
 
-santas.each do |santa|
-  santa.about
-end
+# santas.each do |santa|
+#   santa.about
+# end
+
+p santas[12].age
+p santas[12].ethnicity
+
+santas[12].about
+santas[12].celebrate_birthday
+santas[12].get_mad_at("Dasher")
+santas[12].gender = "Mystery Gender"
+santas[12].about
