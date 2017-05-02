@@ -17,5 +17,6 @@ Behavior:
 Bark
 Cuddle
 Run
+Play Dead
 ----------------------
 =end
