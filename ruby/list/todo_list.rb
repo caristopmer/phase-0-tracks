@@ -1,3 +1,8 @@
+
+# Challenge 6.5 Pair Program, 5/3/17
+# Chris McMenomy
+# Joshua Rudio
+
 class TodoList
   def initialize(arr)
     @list = arr
