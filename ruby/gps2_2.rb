@@ -70,7 +70,23 @@ def print_list(list)
   puts "----------"
 end
 
+add_item(list, "lemonade", 2)
+add_item(list, "tomatoes", 3)
+add_item(list, "onions", 1)
+add_item(list, "ice cream", 4)
+
+
 print_list(list)
+
+remove_item(list, "lemonade")
+
+print_list(list)
+
+update_quantity(list, "ice cream", 1)
+
+print_list(list)
+
+
 
 
 
