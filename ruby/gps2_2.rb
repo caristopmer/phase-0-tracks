@@ -9,9 +9,8 @@
 
 def create_list(input)
   list = {}
-  list_array = input.split(' ')
-  list_array.each do |item|
-    list[item] = 1
+  input.split(' ').each do |item|
+    list[item.downcase] = 1
   end 
   list
 end
@@ -25,7 +24,7 @@ p list = create_list("carrots apples cereal pizza")
 # output: updated hash
 
 def add_item(list, new_item, quantity)
-  list[new_item] = quantity
+  list[new_item.downcase] = quantity
 end
 
 p add_item(list, "bananas", 4)
@@ -38,7 +37,7 @@ p list
 # output: updated hash
 
 def remove_item(list, item)
-  list.delete(item)
+  list.delete(item.downcase)
 end
 
 p remove_item(list, "cereal")
@@ -51,7 +50,7 @@ p list
 # output: updated hash
 
 def update_quantity(list, item, new_quantity)
-  list[item] = new_quantity
+  list[item.downcase] = new_quantity
 end
 
 p update_quantity(list, "carrots", 9)
@@ -65,10 +64,12 @@ p list
 def print_list(list)
   puts "----------"
   list.each do |item, quantity|
-    puts "#{item}: x#{quantity}"
+    puts "#{item.capitalize}: x#{quantity}"
   end
   puts "----------"
 end
+
+# Release 2 Test Driver Code
 
 add_item(list, "lemonade", 2)
 add_item(list, "tomatoes", 3)
@@ -85,9 +86,3 @@ print_list(list)
 update_quantity(list, "ice cream", 1)
 
 print_list(list)
-
-
-
-
-
-
