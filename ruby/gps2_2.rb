@@ -61,3 +61,17 @@ p list
 # input: hash
 # steps: Print out our grocery list line by line, with item and quantity
 # output: printed list
+
+def print_list(list)
+  puts "----------"
+  list.each do |item, quantity|
+    puts "#{item}: x#{quantity}"
+  end
+  puts "----------"
+end
+
+print_list(list)
+
+
+
+
