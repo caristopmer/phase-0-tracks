@@ -86,3 +86,28 @@ print_list(list)
 update_quantity(list, "ice cream", 1)
 
 print_list(list)
+
+=begin
+  
+Reflection Section
+
+1. Pseudocode is something I definitely want to work more on. I am always to eager to code solutions
+right away and don't always do a very good job of outlining my intentions in plain english first.
+The provided pseudocode template was great in giving me an idea of how to plan out the problem with
+detailed methods.
+2. I used a hash for this problem for the sake of keeping track of both the item and its quantity.
+I suppose this problem could have also been tackled using multiple arrays, but that would lead to extra
+work and unnecessary complexity.
+3. A method in Ruby returns the last evaluated expression within it, using implicit return. However, 
+can also be return using return statements if so desired.
+4. Methods can take pretty much anything as arguments apparently. Everything in Ruby is an object,
+and methods can take in objects as their arguments.
+5. Passing information between methods can be done by using a method as another method's parameter, 
+by calling a method on an object that is being passed in as an argument to achieve the desired argument, 
+or simply using a global variable that is visible to all methods in a program.
+6. Honestly, I'm feeling pretty solid in pretty much all the facets of my Ruby learning in weeks 4 and 5.
+Week 5 was pretty tough initially, but practice and repetition has helped me to get much more comfortable.
+If anything I still want to get more work with hashes and interacting with/iterating through them just
+to get more comfortable with proper syntax dealing with modifying keys vs. values.
+  
+=end
