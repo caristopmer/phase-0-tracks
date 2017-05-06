@@ -1,4 +1,6 @@
-class Word_Game
+class WordGame
+  attr_accessor :secret_word, :guessed_word, :wrong_guesses_left, :guess_log, :is_over
+
   def initialize(word)
     @secret_word = word.split('')
     @guessed_word = word_hider(word)
@@ -21,8 +23,5 @@ class Word_Game
   end
 end
 
-game = Word_Game.new("test game")
-
-p game
 # Input verification method is done in driver code! alphabet string with 
 # space to check input against. iterate though input to make sure each char is alpha or a space.

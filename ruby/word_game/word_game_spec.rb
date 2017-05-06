@@ -1,10 +1,10 @@
-require relative 'word_game'
+require_relative 'word_game'
 
-describe Word_Game do
-  let(:game) { Word_Game.new }
+describe WordGame do
+  let(:game) { WordGame.new("Test phrase") }
 
   it "User 1 enters word to be guessed" do
-
+    expect(game.secret_word).to eq "Test phrase".split('')
   end
 
   it "User1 can also enter a phrase" do
