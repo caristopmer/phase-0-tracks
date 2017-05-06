@@ -1,10 +1,10 @@
 require_relative 'word_game'
 
 describe WordGame do
-  let(:game) { WordGame.new("Test phrase") }
+  let(:game) { WordGame.new("test phrase") }
 
   it "User 1 enters word or phrase to be guessed" do
-    expect(game.secret_word).to eq "Test phrase".split('')
+    expect(game.secret_word).to eq "test phrase".split('')
   end
 
   it "Allowed wrong guesses is calculated based on secret word length" do
@@ -12,7 +12,8 @@ describe WordGame do
   end
 
   it "User2 inputs a guess letter, guess word is updated with all instances of it" do
-    
+    game.guess_plug("t")
+    expect(game.guessed_word).to eq "t__t ______".split('')
   end
 
   it "Guesses are stored in guess array" do

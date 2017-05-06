@@ -9,8 +9,17 @@ class WordGame
     @is_over = false
   end
 
-  def guess_plug(char)
-
+  def guess_plug(guess)
+    index = 0
+    char_found = false
+    @secret_word.each do |char|
+      if guess == char
+        @guessed_word[index] = guess
+        char_found = true
+      end
+      index += 1
+    end
+    char_found
   end
 
   def word_hider(word)
