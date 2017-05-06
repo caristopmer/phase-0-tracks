@@ -17,11 +17,13 @@ describe WordGame do
   end
 
   it "Guesses are stored in guess array" do
-
+    game.guess_plug("t")
+    expect(game.guess_log).to eq ["t"]
   end
 
   it "Repeat guesses don't count against player" do
-
+    game.guess_plug("e")
+    expect(game.guess_plug("e")).to eq nil
   end
 
   it "Updated guess word is printed after each guess" do

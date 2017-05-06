@@ -10,16 +10,21 @@ class WordGame
   end
 
   def guess_plug(guess)
-    index = 0
-    char_found = false
-    @secret_word.each do |char|
-      if guess == char
-        @guessed_word[index] = guess
-        char_found = true
+    if !@guess_log.include?(guess)
+      index = 0
+      char_found = false
+      @secret_word.each do |char|
+        if guess == char
+          @guessed_word[index] = guess
+          char_found = true
+        end
+        index += 1
       end
-      index += 1
+      @wrong_guesses_left -= 1 if !char_found
+      @guess_log << guess
+    else
+      puts "You already guessed that! Try again."
     end
-    char_found
   end
 
   def word_hider(word)
