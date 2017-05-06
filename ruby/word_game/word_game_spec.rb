@@ -27,7 +27,9 @@ describe WordGame do
   end
 
   it "Updated guess word is printed after each guess" do
-
+    game.guess_plug("t")
+    game.guess_plug("s")
+    expect(game.guessed_word.join(' ')).to eq "t _ s t   _ _ _ _ s _"
   end
 
   it "game_over becomes true once secret word and guess word are equivalent & <= max guesses" do

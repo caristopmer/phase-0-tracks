@@ -50,7 +50,7 @@ class WordGame
   end
 
   def word_status
-    print "Word Status: " + @guessed_word.join
+    print "Word Status: " + @guessed_word.join(' ')
   end
 end
 
