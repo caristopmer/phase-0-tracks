@@ -4,10 +4,13 @@ class WordGame
   def initialize(word)
     @secret_word = word.split('')
     @guessed_word = word_hider(word)
+    @wrong_guesses_left = wrong_guess_calc(word)
+    @guess_log = []
+    @is_over = false
   end
 
-  def word_status
-    print "Word Status: " + @guessed_word.join
+  def guess_plug(char)
+
   end
 
   def word_hider(word)
@@ -20,6 +23,20 @@ class WordGame
       end
     end
     hidden_word
+  end
+
+  def wrong_guess_calc(word)
+    if word.length >= 16
+      15
+    elsif word.length > 6 && word.length < 16
+      10 + ((word.length - 6) / 2)
+    else
+      10
+    end
+  end
+
+  def word_status
+    print "Word Status: " + @guessed_word.join
   end
 end
 
