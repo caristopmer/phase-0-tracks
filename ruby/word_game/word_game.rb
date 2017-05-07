@@ -9,38 +9,6 @@ class WordGame
     @is_over = false
   end
 
-# Method to take valid input from user. Seeded with 0 or 1 based on if it is a letter
-# guess or the initial secret word.
-  def take_input(seed)
-    valid_chars = 'abcdefghijklmnopqrstuvwxyz '
-    if seed == 1
-      valid = false
-      puts "Guess a letter:"
-      until valid
-        input = gets.chomp
-        valid = input.length == 1 && valid_chars.include?(input.downcase)
-        puts "Please guess a single character of the alphabet:" if !valid
-      end
-      input.downcase
-    else
-      valid = false
-      puts "Enter a word or phrase you would like a friend to try to guess."
-      puts "(Please enter only characters of the alphabet!)"
-      until valid
-        valid = true
-        input = gets.chomp.split('')
-        input.each do |char|
-          if !valid_chars.include?(char.downcase)
-            valid = false
-          end
-        end
-        puts "Only letters please!" if !valid
-      end
-      input.join('')
-    end
-  end
-
-
 # Method for plugging a user guess in to see if correct or not, updates guessed word,
 # wrong guess count, and game over status
   def guess_check(guess)
@@ -91,6 +59,53 @@ class WordGame
     print "Word Status: " + @guessed_word.join(' ')
   end
 end
+# End class WordGame
 
-# Input verification method is done in driver code! alphabet string with 
-# space to check input against. iterate though input to make sure each char is alpha or a space.
+
+# Method to take valid input from user. Seeded with 0 or 1 based on if it is a letter
+# guess or the initial secret word.
+  def take_input(seed)
+    valid_chars = 'abcdefghijklmnopqrstuvwxyz '
+    if seed == 1
+      valid = false
+      puts "Guess a letter:"
+      until valid
+        input = gets.chomp
+        valid = input.length == 1 && valid_chars.include?(input.downcase)
+        puts "Please guess a single character of the alphabet:" if !valid
+      end
+      input.downcase
+    else
+      valid = false
+      puts "(Please enter only characters of the alphabet!)"
+      until valid
+        valid = true
+        input = gets.chomp.split('')
+        input.each do |char|
+          if !valid_chars.include?(char.downcase)
+            valid = false
+          end
+        end
+        puts "Only letters please!" if !valid
+      end
+      input.join('')
+    end
+  end
+
+# Begin Driver Code
+
+puts "Welcome to Word Game!"
+puts "The rules are simple: One person enters a word or phrase"
+puts "for another person to try to guess. Let's Begin!"
+
+puts "Player 1, please enter the word or phrase to be guessed now!"
+game = WordGame.new(take_input(0))
+
+p game
+
+
+
+
+
+
+
