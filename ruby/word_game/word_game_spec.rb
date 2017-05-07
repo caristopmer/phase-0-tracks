@@ -12,23 +12,23 @@ describe WordGame do
   end
 
   it "User2 inputs a guess letter, guess word is updated with all instances of it" do
-    game.guess_plug("t")
+    game.guess_check("t")
     expect(game.guessed_word).to eq "t__t ______".split('')
   end
 
   it "Guesses are stored in guess array" do
-    game.guess_plug("t")
+    game.guess_check("t")
     expect(game.guess_log).to eq ["t"]
   end
 
   it "Repeat guesses don't count against player" do
-    game.guess_plug("e")
-    expect(game.guess_plug("e")).to eq nil
+    game.guess_check("e")
+    expect(game.guess_check("e")).to eq nil
   end
 
   it "Updated guess word is printed after each guess" do
-    game.guess_plug("t")
-    game.guess_plug("s")
+    game.guess_check("t")
+    game.guess_check("s")
     expect(game.guessed_word.join(' ')).to eq "t _ s t   _ _ _ _ s _"
   end
 

@@ -9,24 +9,43 @@ class WordGame
     @is_over = false
   end
 
-  def guess_plug(guess)
-    if !@guess_log.include?(guess)
+  def take_input(seed)
+    valid_chars = 'abcdefghijklmnopqrstuvwxyz '
+    if seed == 1
+      valid = false
+      until valid
+        puts "Guess a letter:"
+        letter = gets.chomp.downcase
+      end
+    else
+      #seed 0
+
+    end
+  end
+
+
+# Method for plugging a user guess in to see if correct or not, updates guessed word,
+# wrong guess count, and game over status
+  def guess_check(guess)
+    if @guess_log.include?(guess)
+      puts "You already guessed that! Try again."
+    else
       index = 0
       char_found = false
       @secret_word.each do |char|
-        if guess == char
-          @guessed_word[index] = guess
+        if guess == char.downcase
+          @guessed_word[index] = char
           char_found = true
         end
         index += 1
       end
       @wrong_guesses_left -= 1 if !char_found
       @guess_log << guess
-    else
-      puts "You already guessed that! Try again."
     end
+    @is_over = @secret_word == @guessed_word || @wrong_guesses_left == 0
   end
 
+ # Method to transform the secret word into blank spaces to be guessed and filled.
   def word_hider(word)
     hidden_word = []
     word.split('').each do |char|
@@ -39,6 +58,7 @@ class WordGame
     hidden_word
   end
 
+ # Method to determine the number of wrong guesses to allow based on secret word length.
   def wrong_guess_calc(word)
     if word.length >= 16
       15
@@ -49,6 +69,7 @@ class WordGame
     end
   end
 
+ # Print method to display status of guessed word
   def word_status
     print "Word Status: " + @guessed_word.join(' ')
   end
