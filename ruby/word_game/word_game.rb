@@ -55,6 +55,8 @@ class WordGame
   def guess_check(guess)
     if @guess_log.include?(guess)
       puts "You already guessed that! Try again."
+    elsif guess == " "
+      puts "No need to guess space characters!"
     else
       index = 0
       char_found = false
