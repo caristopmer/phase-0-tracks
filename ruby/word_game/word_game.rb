@@ -1,3 +1,9 @@
+=begin
+
+Paste in pseudocode here
+
+=end
+
 class WordGame
   attr_accessor :secret_word, :guessed_word, :wrong_guesses_left, :guess_log, :is_over
 
@@ -56,7 +62,8 @@ class WordGame
 
  # Print method to display status of guessed word
   def word_status
-    print "Word Status: " + @guessed_word.join(' ')
+    puts "Word Status: " + @guessed_word.join(' ')
+    puts "#{@wrong_guesses_left} incorrect guesses left."
   end
 end
 # End class WordGame
@@ -101,10 +108,22 @@ puts "for another person to try to guess. Let's Begin!"
 puts "Player 1, please enter the word or phrase to be guessed now!"
 game = WordGame.new(take_input(0))
 
-p game
+puts "Okay, Player 2:"
 
+until game.is_over
+  game.word_status
+  letter_guess = take_input(1)
+  game.guess_check(letter_guess)
+end
 
-
+if game.secret_word == game.guessed_word
+  puts "Congratulations, you got it! The secret word/phrase was:"
+  puts game.secret_word.join('')
+  puts "SUCCESS!!!"
+else
+  puts "Wow, you really screwed that one up... Next time you should actually try!"
+  puts "GAME OVER"
+end
 
 
 
