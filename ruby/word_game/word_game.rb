@@ -52,11 +52,11 @@ class WordGame
  # Method to determine the number of wrong guesses to allow based on secret word length.
   def wrong_guess_calc(word)
     if word.length >= 16
-      15
-    elsif word.length > 6 && word.length < 16
-      10 + ((word.length - 6) / 2)
-    else
       10
+    elsif word.length > 6 && word.length < 16
+      5 + ((word.length - 6) / 2)
+    else
+      5
     end
   end
 
@@ -104,27 +104,38 @@ end
 puts "Welcome to Word Game!"
 puts "The rules are simple: One person enters a word or phrase"
 puts "for another person to try to guess. Let's Begin!"
+replay = true
 
-puts "Player 1, please enter the word or phrase to be guessed now!"
-game = WordGame.new(take_input(0))
-
-puts "Okay, Player 2:"
-
-until game.is_over
-  game.word_status
-  letter_guess = take_input(1)
-  game.guess_check(letter_guess)
+while replay
+  puts "Player 1, please enter the word or phrase to be guessed now!"
+  game = WordGame.new(take_input(0))
+  puts `clear`
+  puts "Perfect! Okay, Player 2:"
+  
+  until game.is_over
+    game.word_status
+    letter_guess = take_input(1)
+    game.guess_check(letter_guess)
+  end
+  
+  if game.secret_word == game.guessed_word
+    puts "Congratulations, you got it! The secret word/phrase was:"
+    puts game.secret_word.join('')
+    puts "SUCCESS!!!"
+  else
+    puts "Wow, you really screwed that one up... Next time you should actually try!"
+    puts "GAME OVER"
+  end
+  loop do
+    puts "Would you like to play again? (y/n)"
+    input = gets.chomp
+    if input.downcase == "y" || input.downcase == "yes"
+      break
+    elsif input.downcase =="n" || input.downcase == "no"
+      replay = false
+      break
+    else
+      puts "Huh? (Y)es or (N)o please..."
+    end
+  end
 end
-
-if game.secret_word == game.guessed_word
-  puts "Congratulations, you got it! The secret word/phrase was:"
-  puts game.secret_word.join('')
-  puts "SUCCESS!!!"
-else
-  puts "Wow, you really screwed that one up... Next time you should actually try!"
-  puts "GAME OVER"
-end
-
-
-
-
