@@ -9,17 +9,34 @@ class WordGame
     @is_over = false
   end
 
+# Method to take valid input from user. Seeded with 0 or 1 based on if it is a letter
+# guess or the initial secret word.
   def take_input(seed)
     valid_chars = 'abcdefghijklmnopqrstuvwxyz '
     if seed == 1
       valid = false
+      puts "Guess a letter:"
       until valid
-        puts "Guess a letter:"
-        letter = gets.chomp.downcase
+        input = gets.chomp
+        valid = input.length == 1 && valid_chars.include?(input.downcase)
+        puts "Please guess a single character of the alphabet:" if !valid
       end
+      input.downcase
     else
-      #seed 0
-
+      valid = false
+      puts "Enter a word or phrase you would like a friend to try to guess."
+      puts "(Please enter only characters of the alphabet!)"
+      until valid
+        valid = true
+        input = gets.chomp.split('')
+        input.each do |char|
+          if !valid_chars.include?(char.downcase)
+            valid = false
+          end
+        end
+        puts "Only letters please!" if !valid
+      end
+      input.join('')
     end
   end
 
@@ -41,8 +58,8 @@ class WordGame
       end
       @wrong_guesses_left -= 1 if !char_found
       @guess_log << guess
+      @is_over = @secret_word == @guessed_word || @wrong_guesses_left == 0
     end
-    @is_over = @secret_word == @guessed_word || @wrong_guesses_left == 0
   end
 
  # Method to transform the secret word into blank spaces to be guessed and filled.

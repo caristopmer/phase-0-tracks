@@ -33,15 +33,9 @@ describe WordGame do
   end
 
   it "game_over becomes true once secret word and guess word are equivalent & <= max guesses" do
-
-  end
-
-  it "User1 can only input alpha characters" do
-
-  end
-
-  it "User2 can only input alpha character guesses" do
-
+    game.guessed_word = "test ph_ase".split('')
+    game.guess_check("r")
+    expect(game.is_over).to eq true
   end
 
 end
