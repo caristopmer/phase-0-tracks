@@ -1,7 +1,42 @@
 =begin
+Word Game Pseudo Code
 
-Paste in pseudocode here
+One user enters a word or phrase, another user attempts to guess.
+- utilize a class to create an instance of a game.
+Limited number of guesses, relative to length of word.
+Repeat guesses don't count against user.
+Continual update of word status after each guess.
+Congratulatory message on win, taunt on loss
 
+Game Class:
+Attributes:
+  secret_word
+  guessed_word
+  wrong_guesses_remaining
+  previous_guess_log
+  game over boolean
+
+Methods:
+  initialize
+  print_word_status
+  check_guess
+    take in guess as argument
+    check if guess has already been made
+    if not already guessed, plug guess into word
+      - update guessed word if letter is correct
+      - otherwise, reduce wrong guesses left by 1
+      - add guess to previous guess log
+      - check for secret word complete or out of guesses, adjust game_over if necessary.
+  wrong_guess_num_calculator
+  secret_word_hider
+
+Driver Code:
+  Take in secret word from user 1
+  Allow user to guess letters for the secret word in a loop.
+  Loop will run until the game is over either by guessing the word or
+running out of guesses.
+  Display message based on win or loss
+  Ask the players if they want to play again.
 =end
 
 class WordGame
@@ -52,9 +87,9 @@ class WordGame
  # Method to determine the number of wrong guesses to allow based on secret word length.
   def wrong_guess_calc(word)
     if word.length >= 16
-      10
+      8
     elsif word.length > 6 && word.length < 16
-      5 + ((word.length - 6) / 2)
+      6 + ((word.length - 6) / 5)
     else
       5
     end
@@ -71,33 +106,33 @@ end
 
 # Method to take valid input from user. Seeded with 0 or 1 based on if it is a letter
 # guess or the initial secret word.
-  def take_input(seed)
-    valid_chars = 'abcdefghijklmnopqrstuvwxyz '
-    if seed == 1
-      valid = false
-      puts "Guess a letter:"
-      until valid
-        input = gets.chomp
-        valid = input.length == 1 && valid_chars.include?(input.downcase)
-        puts "Please guess a single character of the alphabet:" if !valid
-      end
-      input.downcase
-    else
-      valid = false
-      puts "(Please enter only characters of the alphabet!)"
-      until valid
-        valid = true
-        input = gets.chomp.split('')
-        input.each do |char|
-          if !valid_chars.include?(char.downcase)
-            valid = false
-          end
-        end
-        puts "Only letters please!" if !valid
-      end
-      input.join('')
+def take_input(seed)
+  valid_chars = 'abcdefghijklmnopqrstuvwxyz '
+  if seed == 1
+    valid = false
+    puts "Guess a letter:"
+    until valid
+      input = gets.chomp
+      valid = input.length == 1 && valid_chars.include?(input.downcase)
+      puts "Please guess a single character of the alphabet:" if !valid
     end
+    input.downcase
+  else
+    valid = false
+    puts "(Please enter only characters of the alphabet!)"
+    until valid
+      valid = true
+      input = gets.chomp.split('')
+      input.each do |char|
+        if !valid_chars.include?(char.downcase)
+          valid = false
+        end
+      end
+      puts "Only letters please!" if !valid
+    end
+    input.join('')
   end
+end
 
 # Begin Driver Code
 
@@ -120,7 +155,7 @@ while replay
   
   if game.secret_word == game.guessed_word
     puts "Congratulations, you got it! The secret word/phrase was:"
-    puts game.secret_word.join('')
+    puts "* * * " + game.secret_word.join('') + " * * *"
     puts "SUCCESS!!!"
   else
     puts "Wow, you really screwed that one up... Next time you should actually try!"
@@ -130,9 +165,11 @@ while replay
     puts "Would you like to play again? (y/n)"
     input = gets.chomp
     if input.downcase == "y" || input.downcase == "yes"
+      puts `clear`
       break
     elsif input.downcase =="n" || input.downcase == "no"
       replay = false
+      puts "Thanks for playing!"
       break
     else
       puts "Huh? (Y)es or (N)o please..."

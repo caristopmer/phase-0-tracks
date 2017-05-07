@@ -37,5 +37,4 @@ describe WordGame do
     game.guess_check("r")
     expect(game.is_over).to eq true
   end
-
 end
