@@ -1,3 +1,7 @@
+// Challenge 7.2 Pair Program, 5/9/17
+// Enrico Desantis
+// Chris McMenomy
+
 var colors = ["blue", "red", "green", "yellow"];
 var horses = ["Joe", "Ed", "Betsy", "Lou"];
 
