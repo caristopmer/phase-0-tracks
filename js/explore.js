@@ -10,7 +10,15 @@ Once complete, the new string will be a reversed version of the intake string.
 Return new string.
 */
 
+function reverse(string) {
+  var new_string = '';
+  for (i = string.length - 1; i >= 0; i--) {
+    new_string += string[i];
+  }
+  return new_string;
+}
 
-
-
-
+console.log(reverse("Howdy"));
+console.log(reverse("hello"));
+console.log(reverse("mississippi"));
+console.log(reverse("programmer"));
