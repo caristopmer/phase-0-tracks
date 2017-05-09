@@ -18,7 +18,16 @@ function reverse(string) {
   return new_string;
 }
 
-console.log(reverse("Howdy"));
-console.log(reverse("hello"));
-console.log(reverse("mississippi"));
-console.log(reverse("programmer"));
+// console.log(reverse("Howdy"));
+// console.log(reverse("hello"));
+// console.log(reverse("mississippi"));
+// console.log(reverse("programmer"));
+
+var stored_output = reverse("JavaScript is wonderful");
+
+if (5 == 5) {
+  console.log(stored_output)
+}
+else {
+  console.log("As long as 5 is equal to 5, this will never print.")
+}
