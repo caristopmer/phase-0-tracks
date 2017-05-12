@@ -14,62 +14,55 @@ require_relative 'state_data'
 class VirusPredictor
   # takes 3 arguments to declare attributes
   # will run anytime a new instance is made
-  def initialize(state_of_origin, population_density, population)
+  def initialize(state_of_origin)
     @state = state_of_origin
-    @population = population
-    @population_density = population_density
+    @population = STATE_DATA[state_of_origin][:population]
+    @population_density = STATE_DATA[state_of_origin][:population_density]
   end
+
   # calls the other two methods in class in order to print out the results of the methods on each instance
   def virus_effects
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    puts "#{@state} will lose #{predicted_deaths} people in this outbreak and will spread across the state in #{speed_of_spread} months.\n\n"
   end
 
   private
 
     # calculates the number of deaths based on state population and population density 
     # and will print them to console
-  def predicted_deaths(population_density, population, state)
+  def predicted_deaths
     # predicted deaths is solely based on population density
     if @population_density >= 200
-      number_of_deaths = (@population * 0.4).floor
+      multiplier = 0.4
     elsif @population_density >= 150
-      number_of_deaths = (@population * 0.3).floor
+      multiplier = 0.3
     elsif @population_density >= 100
-      number_of_deaths = (@population * 0.2).floor
+      multiplier = 0.2
     elsif @population_density >= 50
-      number_of_deaths = (@population * 0.1).floor
+      multiplier = 0.1
     else
-      number_of_deaths = (@population * 0.05).floor
+      multiplier = 0.05
     end
-
-    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
-
+    (@population * multiplier).floor
   end
 
   # calculates the speed of spread of the virus based on the state's population density
   # the higher the density, the faster it travels, and prints the speed of spread.
-  def speed_of_spread(population_density, state) #in months
+  def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
-    speed = 0.0
-
+    
     if @population_density >= 200
-      speed += 0.5
+      0.5
     elsif @population_density >= 150
-      speed += 1
+      1
     elsif @population_density >= 100
-      speed += 1.5
+      1.5
     elsif @population_density >= 50
-      speed += 2
+      2
     else
-      speed += 2.5
+      2.5
     end
-
-    puts " and will spread across the state in #{speed} months.\n\n"
-
   end
-
 end
 
 #=======================================================================
@@ -91,7 +84,7 @@ alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density],
 alaska.virus_effects
 =end
 
-STATE_DATA.each {|state, info| VirusPredictor.new(state, info[:population_density], info[:population]).virus_effects}
+STATE_DATA.each_key { |state| VirusPredictor.new(state).virus_effects }
 
 #=======================================================================
 # Reflection Section
