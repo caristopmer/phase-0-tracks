@@ -82,22 +82,35 @@ function random_data(n) {
   return random_array;
 }
 
+// // Release 0 Test Code
+// var test1 = ["long phrase","longest phrase","longer phrase"];
+// var test2 = ["four", "eleven", "a", "thirteen", "twenty four", "eight", "one"];
 
-// Release 0 Test Code
-var test1 = ["long phrase","longest phrase","longer phrase"];
-var test2 = ["four", "eleven", "a", "thirteen", "twenty four", "eight", "one"];
+// console.log(longest_item(test1));
+// console.log(longest_item(test2));
 
-console.log(longest_item(test1));
-console.log(longest_item(test2));
+// // Release 1 Test Code
+// console.log(share_pair({name: "Steven", age: 54}, {name: "Tamir", age: 54}));
+// console.log(share_pair({name: "Steven", "age": 54}, {name: "Tamir", age: 54}));
+// console.log(share_pair({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}));
+// console.log(share_pair({animal: "Dawg", legs: 4}, {animal: "Dog", legs: 3}));
+// console.log(share_pair({name: "Steven", age: 21}, {name: "Tamir", age: 54}));
 
-// Release 1 Test Code
-console.log(share_pair({name: "Steven", age: 54}, {name: "Tamir", age: 54}));
-console.log(share_pair({name: "Steven", "age": 54}, {name: "Tamir", age: 54}));
-console.log(share_pair({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}));
-console.log(share_pair({animal: "Dawg", legs: 4}, {animal: "Dog", legs: 3}));
-console.log(share_pair({name: "Steven", age: 21}, {name: "Tamir", age: 54}));
+// // Release 2 Test Code
+// console.log(random_data(3));
+// console.log(random_data(5));
+// console.log(random_data(7));
 
-// Release 2 Test Code
-console.log(random_data(3));
-console.log(random_data(5));
-console.log(random_data(7));
+//Release 2 Driver Code
+console.log("An array of random length (2-8 items) of random words will be generated 10 times.");
+console.log("Each array will be evaluated to determine the longest word contained within it.");
+var test_array = [];
+for (t = 1; t < 11; t++) {
+  test_array = random_data(Math.floor(Math.random() * 7) + 2);
+  console.log("Randomized test array for iteration #" + t + ":");
+  console.log(test_array);
+  console.log("Longest word:");
+  console.log(longest_item(test_array));
+  console.log("--------------------");
+}
+console.log("All done!");
