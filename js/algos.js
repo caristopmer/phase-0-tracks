@@ -53,7 +53,34 @@ function share_pair(obj1, obj2) {
   return false;
 }
 
+/* Release 2 Pseudocode
 
+Function will take an integer as an argument
+Function will return an array of random words of random length. Array
+will be the length of the integer argument.
+
+Function will create an alphabet string used to create random words.
+Initialize a return array to be filled with random words.
+Integer argument: n
+Function will loop n times to fill the return array with random words.
+  - Initialize a random word empty string. Then loop 1-10 times(randomly):
+    - Add a random character from the alphabet to the random word string.
+  - Add the random word to the return array.
+When done filling return array to desired length, return the array.
+*/
+
+function random_data(n) {
+  var alpha = "abcdefghijklmnopqrstuvwxyz";
+  var random_array = [];
+  for (i = 0; i < n; i++) {
+    var random_word = "";
+    for (x = 0; x < (Math.floor(Math.random() * 10) + 1); x++) {
+      random_word += alpha[Math.floor(Math.random() * 26)];
+    }
+    random_array.push(random_word);
+  }
+  return random_array;
+}
 
 
 // Release 0 Test Code
@@ -69,6 +96,8 @@ console.log(share_pair({name: "Steven", "age": 54}, {name: "Tamir", age: 54}));
 console.log(share_pair({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}));
 console.log(share_pair({animal: "Dawg", legs: 4}, {animal: "Dog", legs: 3}));
 console.log(share_pair({name: "Steven", age: 21}, {name: "Tamir", age: 54}));
+
 // Release 2 Test Code
-
-
+console.log(random_data(3));
+console.log(random_data(5));
+console.log(random_data(7));
