@@ -1,0 +1,32 @@
+2. sqlite> select * FROM reviews INNER JOIN users ON reviews.user_id = users.id INNER JOIN businesses ON reviews.business_id = businesses.id;
+
+1|3|This place sucks!|2|3|3|Angela|Jolie|2|Amir's Towing
+2|5|Tremendous value!|1|1|1|Bradford|Pitt|1|Grundy Hollow Wedding Chapel
+3|1|Worst experience of my life!!!|3|2|2|Mandy|Kaling|3|The Beagle Nightclub
+
+
+sqlite> select businesses.name, users.first_name, reviews.comment FROM reviews INNER JOIN users ON reviews.user_id = users.id INNER JOIN businesses ON reviews.business_id = businesses.id;
+
+Amir's Towing|Angela|This place sucks!
+Grundy Hollow Wedding Chapel|Bradford|Tremendous value!
+The Beagle Nightclub|Mandy|Worst experience of my life!!!
+
+
+
+3. sqlite> select businesses.name, users.first_name, users.last_name, reviews.stars, reviews.comment FROM reviews LEFT JOIN users ON reviews.user_id = users.id LEFT JOIN businesses ON reviews.business_id = businesses.id;
+
+Amir's Towing|Angela|Jolie|3|This place sucks!
+Grundy Hollow Wedding Chapel|Bradford|Pitt|5|Tremendous value!
+The Beagle Nightclub|Mandy|Kaling|1|Worst experience of my life!!!
+
+
+sqlite> select businesses.name, users.first_name, users.last_name, reviews.stars, reviews.comment FROM reviews INNER JOIN users ON reviews.user_id = users.id INNER JOIN businesses ON reviews.business_id = businesses.id;
+
+Amir's Towing|Angela|Jolie|3|This place sucks!
+Grundy Hollow Wedding Chapel|Bradford|Pitt|5|Tremendous value!
+The Beagle Nightclub|Mandy|Kaling|1|Worst experience of my life!!!
+
+
+4. sqlite> select * FROM reviews INNER JOIN users ON reviews.user_id = users.id INNER JOIN businesses ON reviews.business_id = businesses.id WHERE business_id=1;
+
+2|5|Tremendous value!|1|1|1|Bradford|Pitt|1|Grundy Hollow Wedding Chapel
