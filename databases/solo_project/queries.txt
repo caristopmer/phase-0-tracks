@@ -35,3 +35,25 @@ Suckerbeast|Freshwater Cichlid Tank
 Talbot|Reef Tank
 
 5. DELETE FROM fish WHERE name="Shrimpy";
+
+
+Release 3
+SELECT fish.name, fish.aggressive, tanks.name, tanks.gallons FROM fish JOIN tanks ON fish.tank_id = tanks.id;
+Snoopy|true|Freshwater Cichlid Tank|75
+Franz|true|Reef Tank|40
+Angelicus|false|Peaceful Freshwater Tank|29
+Blue Fella|false|Reef Tank|40
+Son of Suckerbeast|true|Peaceful Freshwater Tank|29
+Jackie Blue|true|Freshwater Cichlid Tank|75
+Suckerbeast|true|Freshwater Cichlid Tank|75
+Talbot|true|Reef Tank|40
+
+SELECT fish.name, tanks.name, tanks.gallons FROM fish LEFT OUTER JOIN tanks ON fish.tank_id = tanks.id;
+Snoopy|Freshwater Cichlid Tank|75
+Franz|Reef Tank|40
+Angelicus|Peaceful Freshwater Tank|29
+Blue Fella|Reef Tank|40
+Son of Suckerbeast|Peaceful Freshwater Tank|29
+Jackie Blue|Freshwater Cichlid Tank|75
+Suckerbeast|Freshwater Cichlid Tank|75
+Talbot|Reef Tank|40
