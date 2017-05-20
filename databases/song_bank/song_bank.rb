@@ -42,6 +42,31 @@ create_table_cmd = <<-SQL
 SQL
 db.execute(create_table_cmd)
 
+
+# Populate default songs and playlists
+if db.execute("SELECT * FROM songs").length == 0
+  db.execute("INSERT INTO genres (genre) VALUES ('Rock')")
+  db.execute("INSERT INTO genres (genre) VALUES ('Pop')")
+  db.execute("INSERT INTO genres (genre) VALUES ('Metal')")
+  db.execute("INSERT INTO genres (genre) VALUES ('Country')")
+  db.execute("INSERT INTO genres (genre) VALUES ('Electronic')")
+
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Strobe', 'Deadmau5', 5)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Sandstorm', 'Darude', 5)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Take It Easy', 'Eagles', 1)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('LA Woman', 'The Doors', 1)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Billie Jean', 'Michael Jackson', 2)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Material Girl', 'Madonna', 2)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Master of Puppets', 'Metallica', 3)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Iron Man', 'Black Sabbath', 3)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Friends In Low Places', 'Garth Brooks', 4)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('My Maria', 'Brooks & Dunn', 4)")
+
+  db.execute("INSERT INTO playlists (name, song_order) VALUES ('Rockin Out', '4 7 8')")
+  db.execute("INSERT INTO playlists (name, song_order) VALUES ('Workout', '1 2 5 9 10')")
+  db.execute("INSERT INTO playlists (name, song_order) VALUES ('Long Songs', '1 4 7')")
+end
+
 # Methods
 
 def print_songs
