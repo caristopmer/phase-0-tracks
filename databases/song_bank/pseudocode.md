@@ -13,6 +13,7 @@ Initialize the database and build it if not already present on the computer.
 ### Methods:
 * print_songs
 * print_list
+* print_all_lists
 * add_song
 * build_list
 

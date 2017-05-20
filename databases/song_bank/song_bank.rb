@@ -69,20 +69,34 @@ end
 
 # Methods
 
-def print_songs
+def print_songs(db)
+  all_songs = db.execute("SELECT songs.name, songs.artist, genres.genre FROM songs, genres ON songs.genre_id = genres.id")
+  song_numerator = 1
+  all_songs.each do |song|
+    puts "#{song_numerator}. \"#{song[0]}\" by #{song[1]}. Genre: #{song[2]}"
+    song_numerator += 1    
+  end
+  all_songs
+end
+
+def print_list(db, playlist)
   
 end
 
-def print_list(playlist)
+def add_song(db, name, artist, genre)
   
 end
 
-def add_song(name, artist, genre)
-  
-end
-
-def build_list
+def build_list(db)
   
 end
 
 # Driver Code
+
+print_songs(db)
+
+
+
+
+
+
