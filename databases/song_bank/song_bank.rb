@@ -134,10 +134,14 @@ def build_list(db)
   choice = gets.chomp.to_i
 
   if choice == 1
+    print_songs(db)
+    puts "Please enter the song number you want to add to the playlist from the list above, or enter 'd' for done."
     loop do
-      db.print_songs
-      puts "Please "
-
+      current_choice = gets.chomp
+      break if current_choice.downcase == 'd'
+      new_playlist << current_choice.strip
+      puts "Current choices: #{new_playlist}"
+      puts "Next song:"
     end
   elsif choice == 2
 
@@ -146,6 +150,7 @@ def build_list(db)
   else
       
   end
+  db.execute("INSERT INTO playlists (name, song_order) VALUES (?, ?)", [new_name, new_playlist.join(' ')])
 end
 
 # random or genre list
@@ -160,3 +165,5 @@ add_song(db, "Night Moves", "Bob Seger", 1)
 print_songs(db)
 
 print_list(db, "Workout")
+
+build_list(db)
