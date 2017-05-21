@@ -72,10 +72,12 @@ end
 def print_songs(db)
   all_songs = db.execute("SELECT songs.name, songs.artist, genres.genre FROM songs, genres ON songs.genre_id = genres.id")
   song_numerator = 1
+  puts "*" * 40 + "\n\n"
   all_songs.each do |song|
     puts "#{song_numerator}. \"#{song[0]}\" by #{song[1]}. Genre: #{song[2]}"
     song_numerator += 1    
   end
+  puts "\n" + "*" * 40
   all_songs
 end
 
@@ -84,7 +86,13 @@ def print_list(db, playlist)
 end
 
 def add_song(db, name, artist, genre)
-  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES (?, ?, ?)", [name, artist, genre])
+  if db.execute("SELECT * FROM songs WHERE name= ? AND artist= ?", [name, artist]) == []
+    db.execute("INSERT INTO songs (name, artist, genre_id) VALUES (?, ?, ?)", [name, artist, genre])
+    true
+  else
+    puts "\"#{name}\" is already in the song bank!"
+    false
+  end
 end
 
 def build_list(db)
@@ -96,8 +104,3 @@ end
 print_songs(db)
 add_song(db, "Night Moves", "Bob Seger", 1)
 print_songs(db)
-
-
-
-
-
