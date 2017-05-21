@@ -106,6 +106,11 @@ def print_list(db, playlist)
   song_keys
 end
 
+# Method to display all of the stored playlists by name in a readable manner.
+def print_all_lists(db)
+  
+end
+
 # add_song will query the database to see if the song is already present.
 # If it is not, song will be added to list of all songs.
 # If already present, a message will be printed stating so and song will not
@@ -144,7 +149,12 @@ def build_list(db)
       puts "Next song:"
     end
   elsif choice == 2
-
+    genre_info = db.execute("SELECT * FROM genres")
+    puts "Choose a genre by number, from which to create a playlist: (1 - #{genre_info.length})"
+    genre_info.each { |genre| puts "#{genre[0]}. #{genre[1]}" }
+    genre_selection = gets.chomp.to_i
+    chosen_genre_info = db.execute("SELECT songs.id FROM songs WHERE songs.genre_id = ?", [genre_selection])
+    chosen_genre_info.each { |song| new_playlist << song[0].to_s }
   elsif choice == 3
 
   else
@@ -153,7 +163,7 @@ def build_list(db)
   db.execute("INSERT INTO playlists (name, song_order) VALUES (?, ?)", [new_name, new_playlist.join(' ')])
 end
 
-# random or genre list
+# random or genre list, make this into 2 methods and call them inside build list instead of coding in there.
 def auto_list(length)
   
 end
