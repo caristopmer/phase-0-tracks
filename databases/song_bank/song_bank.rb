@@ -75,7 +75,7 @@ end
 # a readable manner. Join tables songs and genres to retrieve the appropriate data in an
 # array format that can then be used to print the data for each song.
 def print_songs(db)
-  all_songs = db.execute("SELECT songs.name, songs.artist, genres.genre FROM songs, genres ON songs.genre_id = genres.id")
+  all_songs = db.execute("SELECT songs.name, songs.artist, genres.genre FROM songs JOIN genres ON songs.genre_id = genres.id")
   song_numerator = 1
   puts "*" * 40 + "\n\n"
   all_songs.each do |song|
@@ -94,7 +94,18 @@ end
 def print_list(db, playlist)
   song_keys = db.execute("SELECT playlists.song_order FROM playlists WHERE name= ?", [playlist])
   song_keys = song_keys[0][0].split(' ')
-  p song_keys
+
+  song_numerator = 1
+  puts "*" * 40 + "\n\n"
+  puts "Playlist: \"#{playlist}\""
+  song_keys.each do |song_id|
+    song_info = db.execute("SELECT songs.name, songs.artist, genres.genre FROM songs JOIN genres ON songs.genre_id = genres.id WHERE songs.id= ?", [song_id])
+    song_info = song_info[0]
+    puts "#{song_numerator}. \"#{song_info[0]}\" by #{song_info[1]}. Genre: #{song_info[2]}"
+    song_numerator += 1
+  end
+  puts "\n" + "*" * 40
+  song_keys
 end
 
 # add_song will query the database to see if the song is already present.
@@ -121,4 +132,4 @@ print_songs(db)
 add_song(db, "Night Moves", "Bob Seger", 1)
 print_songs(db)
 
-print_list(db, "Rockin Out")
+print_list(db, "Workout")
