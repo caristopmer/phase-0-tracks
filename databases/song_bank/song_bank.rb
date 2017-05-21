@@ -84,7 +84,7 @@ def print_list(db, playlist)
 end
 
 def add_song(db, name, artist, genre)
-  
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES (?, ?, ?)", [name, artist, genre])
 end
 
 def build_list(db)
@@ -94,7 +94,8 @@ end
 # Driver Code
 
 print_songs(db)
-
+add_song(db, "Night Moves", "Bob Seger", 1)
+print_songs(db)
 
 
 
