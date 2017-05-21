@@ -75,12 +75,10 @@ end
 # a readable manner. Join tables songs and genres to retrieve the appropriate data in an
 # array format that can then be used to print the data for each song.
 def print_songs(db)
-  all_songs = db.execute("SELECT songs.name, songs.artist, genres.genre FROM songs JOIN genres ON songs.genre_id = genres.id")
-  song_numerator = 1
+  all_songs = db.execute("SELECT songs.id, songs.name, songs.artist, genres.genre FROM songs JOIN genres ON songs.genre_id = genres.id")
   puts "*" * 40 + "\n\n"
   all_songs.each do |song|
-    puts "#{song_numerator}. \"#{song[0]}\" by #{song[1]}. Genre: #{song[2]}"
-    song_numerator += 1    
+    puts "#{song[0]}. \"#{song[1]}\" by #{song[2]}. Genre: #{song[3]}"    
   end
   puts "\n" + "*" * 40
   all_songs
@@ -122,7 +120,36 @@ def add_song(db, name, artist, genre)
   end
 end
 
+# build_list method will run when the user decides to build a new playlist. User will be
+# asked to name the playlist, then manually enter songs to include, choose a length and
+# randomly generate a playlist, or create a genre playlist.
 def build_list(db)
+  new_playlist = []
+  puts "Please enter a name for your new playlist:"
+  new_name = gets.chomp
+  puts "Please select an option: (1, 2, or 3)"
+  puts "1. Build your own custom playlist."
+  puts "2. Create a genre playlist."
+  puts "3. Generate a randomized playlist of desired length."
+  choice = gets.chomp.to_i
+
+  if choice == 1
+    loop do
+      db.print_songs
+      puts "Please "
+
+    end
+  elsif choice == 2
+
+  elsif choice == 3
+
+  else
+      
+  end
+end
+
+# random or genre list
+def auto_list(length)
   
 end
 
