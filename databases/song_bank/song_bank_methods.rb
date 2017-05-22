@@ -9,7 +9,7 @@ def print_songs(db)
   all_songs.each do |song|
     puts "#{song[0]}. \"#{song[1]}\" by #{song[2]}. Genre: #{song[3]}"    
   end
-  puts "\n" + "*" * 40
+  puts "\n" + "*" * 40 + "\n\n"
   all_songs
 end
 
@@ -31,7 +31,7 @@ def print_list(db, playlist)
     puts "#{song_numerator}. \"#{song_info[0]}\" by #{song_info[1]}. Genre: #{song_info[2]}"
     song_numerator += 1
   end
-  puts "\n" + "*" * 40
+  puts "\n" + ("*" * 40) + "\n\n"
   song_keys
 end
 
@@ -39,11 +39,15 @@ end
 def print_all_lists(db)
   playlists_info = db.execute("SELECT playlists.name, playlists.song_order FROM playlists")
   playlist_numerator = 1
+
+  puts "*" * 40 + "\n\n"
   puts "Playlists:"
   playlists_info.each do |list|
     puts "#{playlist_numerator}. Name: #{list[0]}  # of Songs: #{list[1].split(' ').length}"
     playlist_numerator += 1
   end
+  puts "\n" + ("*" * 40) + "\n\n"
+  playlists_info
 end
 
 # add_song will query the database to see if the song is already present.

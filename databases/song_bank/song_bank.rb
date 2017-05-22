@@ -71,14 +71,64 @@ end
 
 # User Interface/Driver Code
 
-print_songs(db)
-add_song(db, "Night Moves", "Bob Seger", 1)
-print_songs(db)
+# Test Code
+# print_songs(db)
+# add_song(db, "Night Moves", "Bob Seger", 1)
+# print_songs(db)
 
-print_list(db, "Workout")
+# print_list(db, "Workout")
 
-print_list(db, "Test 4")
+# print_list(db, "Test 4")
 
-p db.execute("SELECT playlists.song_order FROM playlists WHERE name= 'Test 4'")
+# p db.execute("SELECT playlists.song_order FROM playlists WHERE name= 'Test 4'")
 
-print_all_lists(db)
+# print_all_lists(db)
+
+
+
+#  Program will run until exited, where an exit message will be displayed.
+
+puts "Welcome to Song Bank!"
+wants_to_continue = true
+
+while wants_to_continue
+  valid_input = false
+  while !valid_input
+    puts "What would you like to do today? (Please choose a # from the menu)"
+    puts "1. View all songs in your song bank."
+    puts "2. Add a song to your song bank."
+    puts "3. View your current playlists."
+    puts "4. Create a new playlist."
+    puts "5. Exit Song Bank."
+  
+  
+    choice = gets.chomp
+    if choice == '1'
+      valid_input = true
+      print_songs(db)
+    elsif choice == '2'
+      valid_input = true
+
+    elsif choice == '3'
+      valid_input = true
+      print_all_lists(db)
+    elsif choice == '4'
+      valid_input = true
+
+    elsif choice == '5'
+      puts "Thank you for using Song Bank! Have a nice day!"
+      valid_input = true
+      wants_to_continue = false
+    else
+      puts "I'm sorry, I didn't understand you."
+    end
+  end
+end
+
+
+
+
+
+
+
+
