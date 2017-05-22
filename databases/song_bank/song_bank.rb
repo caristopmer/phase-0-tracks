@@ -139,33 +139,44 @@ def build_list(db)
   choice = gets.chomp.to_i
 
   if choice == 1
-    print_songs(db)
-    puts "Please enter the song number you want to add to the playlist from the list above, or enter 'd' for done."
-    loop do
-      current_choice = gets.chomp
-      break if current_choice.downcase == 'd'
-      new_playlist << current_choice.strip
-      puts "Current choices: #{new_playlist}"
-      puts "Next song:"
-    end
+    custom_list(db)
   elsif choice == 2
-    genre_info = db.execute("SELECT * FROM genres")
-    puts "Choose a genre by number, from which to create a playlist: (1 - #{genre_info.length})"
-    genre_info.each { |genre| puts "#{genre[0]}. #{genre[1]}" }
-    genre_selection = gets.chomp.to_i
-    chosen_genre_info = db.execute("SELECT songs.id FROM songs WHERE songs.genre_id = ?", [genre_selection])
-    chosen_genre_info.each { |song| new_playlist << song[0].to_s }
+    genre_list(db)
   elsif choice == 3
-
+    random_list(db)
   else
-      
+    puts "I'm sorry, I didn't understand you..."
   end
   db.execute("INSERT INTO playlists (name, song_order) VALUES (?, ?)", [new_name, new_playlist.join(' ')])
 end
 
 # random or genre list, make this into 2 methods and call them inside build list instead of coding in there.
-def auto_list(length)
-  
+def custom_list(db)
+  print_songs(db)
+  puts "Please enter the song number you want to add to the playlist from the list above, or enter 'd' for done."
+  loop do
+    current_choice = gets.chomp
+    break if current_choice.downcase == 'd'
+    new_playlist << current_choice.strip
+    puts "Current choices: #{new_playlist}"
+    puts "Next song:"
+  end
+end
+
+def genre_list(db)
+  genre_info = db.execute("SELECT * FROM genres")
+  puts "Choose a genre by number, from which to create a playlist: (1 - #{genre_info.length})"
+  genre_info.each { |genre| puts "#{genre[0]}. #{genre[1]}" }
+  genre_selection = gets.chomp.to_i
+  chosen_genre_info = db.execute("SELECT songs.id FROM songs WHERE songs.genre_id = ?", [genre_selection])
+  chosen_genre_info.each { |song| new_playlist << song[0].to_s }
+end
+
+def random_list(db)
+  puts "How many songs would you like on the playlist?"
+  list_length = gets.chomp.to_i
+  songs_info = db.execute("SELECT songs.id FROM songs")
+  list_length.times { new_playlist << songs_info.delete_at(rand(songs_info.length + 1)) }
 end
 
 # Driver Code
@@ -176,4 +187,6 @@ print_songs(db)
 
 print_list(db, "Workout")
 
-build_list(db)
+print_list(db, "Test 4")
+
+# build_list(db)
