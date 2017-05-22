@@ -106,8 +106,8 @@ while wants_to_continue
       puts "Song added!" if add_song(db, song_name, artist_name, genre_key)
     elsif choice == '3'
       valid_input = true
+      print_all_lists(db)
       loop do
-        print_all_lists(db)
         puts "Please enter the # of the playlist you would like to view, or type 'q' to return to the main menu."
         view_list = gets.chomp
         break if view_list.downcase == 'q'

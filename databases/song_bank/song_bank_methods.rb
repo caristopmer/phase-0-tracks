@@ -19,12 +19,13 @@ end
 # primary keys of songs. Iterate through this array of song primary keys to print the songs
 # on the playlist in a readable way.
 def print_list(db, playlist)
-  song_keys = db.execute("SELECT playlists.song_order FROM playlists WHERE id= ?", [playlist])
-  song_keys = song_keys[0][0].split(' ')
+  song_keys = db.execute("SELECT playlists.name, playlists.song_order FROM playlists WHERE id= ?", [playlist])
+  list_name = song_keys[0][0]
+  song_keys = song_keys[0][1].split(' ')
 
   song_numerator = 1
   puts "*" * 40 + "\n\n"
-  puts "Playlist: \"#{playlist}\""
+  puts "Playlist: \"#{list_name}\""
   song_keys.each do |song_id|
     song_info = db.execute("SELECT songs.name, songs.artist, genres.genre FROM songs JOIN genres ON songs.genre_id = genres.id WHERE songs.id= ?", [song_id])
     song_info = song_info[0]
@@ -84,9 +85,12 @@ def build_list(db)
     puts "I'm sorry, I didn't understand you..."
   end
   db.execute("INSERT INTO playlists (name, song_order) VALUES (?, ?)", [new_name, new_playlist.join(' ')])
+  puts "New playlist created! Here it is:"
+  print_list(db, db.execute("SELECT playlists.id FROM playlists WHERE name= ?", [new_name])[0][0])
 end
 
-# random or genre list, make this into 2 methods and call them inside build list instead of coding in there.
+# custom_list will take user input to build a playlist made up of individual song selections
+# from user
 def custom_list(db)
   new_playlist = []
   print_songs(db)
@@ -101,6 +105,7 @@ def custom_list(db)
   new_playlist
 end
 
+# genre_list will take user input to build a playlist of all songs in bank from specified genre.
 def genre_list(db)
   new_playlist = []
   genre_info = db.execute("SELECT * FROM genres")
@@ -112,11 +117,12 @@ def genre_list(db)
   new_playlist
 end
 
+# random_list will take user input to build a playlist of requested length with random songs.
 def random_list(db)
   new_playlist = []
-  puts "How many songs would you like on the playlist?"
-  list_length = gets.chomp.to_i
   songs_info = db.execute("SELECT songs.id FROM songs")
+  puts "How many songs would you like on the playlist? (1 - #{songs_info.length})"
+  list_length = gets.chomp.to_i
   list_length.times { new_playlist << songs_info.delete_at(rand(songs_info.length - 1))[0] }
   new_playlist
 end

@@ -16,7 +16,9 @@ Initialize the database and build it if not already present on the computer.
 * print_all_lists
 * add_song
 * build_list
-* auto_list
+* custom_list
+* genre_list
+* random_list
 
 ### Driver code:
 Welcome message.
