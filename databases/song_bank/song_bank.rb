@@ -26,16 +26,6 @@ SQL
 db.execute(create_table_cmd)
 
 create_table_cmd = <<-SQL
-  CREATE TABLE IF NOT EXISTS songs_playlists (
-    songs_id INT,
-    playlists_id INT,
-    FOREIGN KEY (songs_id) REFERENCES songs(id),
-    FOREIGN KEY (playlists_id) REFERENCES playlists(id)
-  )
-SQL
-db.execute(create_table_cmd)
-
-create_table_cmd = <<-SQL
   CREATE TABLE IF NOT EXISTS genres (
     id INTEGER PRIMARY KEY,
     genre VARCHAR(255)
@@ -87,10 +77,6 @@ end
 
 # print_all_lists(db)
 
-
-
-#  Program will run until exited, where an exit message will be displayed.
-
 puts "Welcome to Song Bank!"
 wants_to_continue = true
 
@@ -120,10 +106,16 @@ while wants_to_continue
       puts "Song added!" if add_song(db, song_name, artist_name, genre_key)
     elsif choice == '3'
       valid_input = true
-      print_all_lists(db)
+      loop do
+        print_all_lists(db)
+        puts "Please enter the # of the playlist you would like to view, or type 'q' to return to the main menu."
+        view_list = gets.chomp
+        break if view_list.downcase == 'q'
+        print_list(db, view_list.to_i)
+      end
     elsif choice == '4'
       valid_input = true
-
+      build_list(db)
     elsif choice == '5'
       puts "Thank you for using Song Bank! Have a nice day!"
       valid_input = true
@@ -133,11 +125,3 @@ while wants_to_continue
     end
   end
 end
-
-
-
-
-
-
-
-

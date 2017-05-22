@@ -19,7 +19,7 @@ end
 # primary keys of songs. Iterate through this array of song primary keys to print the songs
 # on the playlist in a readable way.
 def print_list(db, playlist)
-  song_keys = db.execute("SELECT playlists.song_order FROM playlists WHERE name= ?", [playlist])
+  song_keys = db.execute("SELECT playlists.song_order FROM playlists WHERE id= ?", [playlist])
   song_keys = song_keys[0][0].split(' ')
 
   song_numerator = 1
@@ -37,14 +37,12 @@ end
 
 # Method to display all of the stored playlists by name in a readable manner.
 def print_all_lists(db)
-  playlists_info = db.execute("SELECT playlists.name, playlists.song_order FROM playlists")
-  playlist_numerator = 1
+  playlists_info = db.execute("SELECT playlists.id, playlists.name, playlists.song_order FROM playlists")
 
   puts "*" * 40 + "\n\n"
   puts "Playlists:"
   playlists_info.each do |list|
-    puts "#{playlist_numerator}. Name: #{list[0]}  # of Songs: #{list[1].split(' ').length}"
-    playlist_numerator += 1
+    puts "#{list[0]}. Name: #{list[1]}  # of Songs: #{list[2].split(' ').length}"
   end
   puts "\n" + ("*" * 40) + "\n\n"
   playlists_info
