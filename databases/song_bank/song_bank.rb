@@ -108,7 +108,13 @@ end
 
 # Method to display all of the stored playlists by name in a readable manner.
 def print_all_lists(db)
-  
+  playlists_info = db.execute("SELECT playlists.name, playlists.song_order FROM playlists")
+  playlist_numerator = 1
+  puts "Playlists:"
+  playlists_info.each do |list|
+    puts "#{playlist_numerator}. Name: #{list[0]}  # of Songs: #{list[1].split(' ').length}"
+    playlist_numerator += 1
+  end
 end
 
 # add_song will query the database to see if the song is already present.
@@ -129,7 +135,6 @@ end
 # asked to name the playlist, then manually enter songs to include, choose a length and
 # randomly generate a playlist, or create a genre playlist.
 def build_list(db)
-  new_playlist = []
   puts "Please enter a name for your new playlist:"
   new_name = gets.chomp
   puts "Please select an option: (1, 2, or 3)"
@@ -139,11 +144,11 @@ def build_list(db)
   choice = gets.chomp.to_i
 
   if choice == 1
-    custom_list(db)
+    new_playlist = custom_list(db)
   elsif choice == 2
-    genre_list(db)
+    new_playlist = genre_list(db)
   elsif choice == 3
-    random_list(db)
+    new_playlist = random_list(db)
   else
     puts "I'm sorry, I didn't understand you..."
   end
@@ -152,6 +157,7 @@ end
 
 # random or genre list, make this into 2 methods and call them inside build list instead of coding in there.
 def custom_list(db)
+  new_playlist = []
   print_songs(db)
   puts "Please enter the song number you want to add to the playlist from the list above, or enter 'd' for done."
   loop do
@@ -161,22 +167,27 @@ def custom_list(db)
     puts "Current choices: #{new_playlist}"
     puts "Next song:"
   end
+  new_playlist
 end
 
 def genre_list(db)
+  new_playlist = []
   genre_info = db.execute("SELECT * FROM genres")
   puts "Choose a genre by number, from which to create a playlist: (1 - #{genre_info.length})"
   genre_info.each { |genre| puts "#{genre[0]}. #{genre[1]}" }
   genre_selection = gets.chomp.to_i
   chosen_genre_info = db.execute("SELECT songs.id FROM songs WHERE songs.genre_id = ?", [genre_selection])
   chosen_genre_info.each { |song| new_playlist << song[0].to_s }
+  new_playlist
 end
 
 def random_list(db)
+  new_playlist = []
   puts "How many songs would you like on the playlist?"
   list_length = gets.chomp.to_i
   songs_info = db.execute("SELECT songs.id FROM songs")
-  list_length.times { new_playlist << songs_info.delete_at(rand(songs_info.length + 1)) }
+  list_length.times { new_playlist << songs_info.delete_at(rand(songs_info.length - 1))[0] }
+  new_playlist
 end
 
 # Driver Code
@@ -189,4 +200,6 @@ print_list(db, "Workout")
 
 print_list(db, "Test 4")
 
-# build_list(db)
+p db.execute("SELECT playlists.song_order FROM playlists WHERE name= 'Test 4'")
+
+print_all_lists(db)
