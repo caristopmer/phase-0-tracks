@@ -50,6 +50,7 @@ if db.execute("SELECT * FROM genres").length == 0
   db.execute("INSERT INTO genres (genre) VALUES ('Metal')")
   db.execute("INSERT INTO genres (genre) VALUES ('Country')")
   db.execute("INSERT INTO genres (genre) VALUES ('Electronic')")
+  db.execute("INSERT INTO genres (genre) VALUES ('Rap')")
 end
 if db.execute("SELECT * FROM songs").length == 0
   db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Strobe', 'Deadmau5', 5)")
@@ -62,6 +63,8 @@ if db.execute("SELECT * FROM songs").length == 0
   db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Iron Man', 'Black Sabbath', 3)")
   db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Friends In Low Places', 'Garth Brooks', 4)")
   db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('My Maria', 'Brooks & Dunn', 4)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Shoop', 'Salt-N-Pepa', 6)")
+  db.execute("INSERT INTO songs (name, artist, genre_id) VALUES ('Ruff Ryders Anthem', 'DMX', 6)")
 end
 if db.execute("SELECT * FROM playlists").length == 0
   db.execute("INSERT INTO playlists (name, song_order) VALUES ('Rockin Out', '4 7 8')")
@@ -101,14 +104,20 @@ while wants_to_continue
     puts "4. Create a new playlist."
     puts "5. Exit Song Bank."
   
-  
     choice = gets.chomp
     if choice == '1'
       valid_input = true
       print_songs(db)
     elsif choice == '2'
       valid_input = true
-
+      puts "Please enter the name of the song you would like to add:"
+      song_name = gets.chomp
+      puts "Artist:"
+      artist_name = gets.chomp
+      puts "Genre: (Please enter the number of the corresponding genre)"
+      db.execute("SELECT genres.id, genres.genre FROM genres").each { |genre| puts "#{genre[0]}. #{genre[1]}" }
+      genre_key = gets.chomp.to_i
+      puts "Song added!" if add_song(db, song_name, artist_name, genre_key)
     elsif choice == '3'
       valid_input = true
       print_all_lists(db)
