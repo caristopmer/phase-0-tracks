@@ -7,10 +7,12 @@ What are some common HTTP status codes?
 * 400 - Bad Request, Request could not be understood by the server, likely due to incorrect syntax.
 * 403 - Forbidden, server is refusing to fulfill the request.
 
+
 What is the difference between a GET request and a POST request? When might each be used?
 
 * A GET request is used to retrieve information from a web server, while Post is used to modify/update or insert information to the web server.
 * A GET might be used simply to retrieve a web page to view, while Post might be used to add/modify data on a web server, such as a user submitting info via a form.
+
 
 Optional bonus question: What is a cookie (the technical kind, not the delicious kind)? How does it relate to HTTP requests?
 
