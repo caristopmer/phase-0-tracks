@@ -5,11 +5,16 @@
 </head>
 <body>
   <h1>Campus Info</h1>
+    <p>Choose a new location for a DBC campus:</p>
+    <form action="/students/campuses" method="POST">
+      <input type="text" name="location" placeholder="Location">
+      <button type="submit">Build new campus!</button>
+    </form>
+    <p>Current Campus Locations:</p>
     <ul>
-      <% @students.each do |student| %>
-        <li><%= student['name'] %>, <%= student['campus'] %></li>
+      <% @campuses.each do |campus| %>
+        <li><%= campus['location'] %></li>
       <% end %>
     </ul>
-
 </body>
 </html>
