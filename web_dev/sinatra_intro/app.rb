@@ -37,6 +37,15 @@ get '/students' do
   response
 end
 
+# write a GET route that retrieves
+# a particular student
+
+get '/students/:id' do
+  student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
+  student.to_s
+end
+
+
 # Release 0 #1
 get '/contact' do
   "Dev Bootcamp<br>123 Fake St.<br>Chicago, IL 60657"
@@ -51,15 +60,20 @@ get '/great_job' do
   end
 end
 
-# Release 0 #2
+# Release 0 #3
 get '/:num_1/plus/:num_2' do
   "#{params[:num_1]} plus #{params[:num_2]} is equal to #{params[:num_1].to_i + params[:num_2].to_i}."
 end
 
-# write a GET route that retrieves
-# a particular student
-
-get '/students/:id' do
-  student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
-  student.to_s
+# Release 0 #4
+get '/students/younger_than/:age' do
+  students = db.execute("SELECT * FROM students WHERE age < ?", [params[:age]])
+  response = ""
+  students.each do |student|
+    response << "ID: #{student['id']}<br>"
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br>"
+    response << "Campus: #{student['campus']}<br><br>"
+  end
+  response
 end
