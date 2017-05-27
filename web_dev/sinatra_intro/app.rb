@@ -37,9 +37,24 @@ get '/students' do
   response
 end
 
+# Release 0 #1
 get '/contact' do
   "Dev Bootcamp<br>123 Fake St.<br>Chicago, IL 60657"
-end  
+end
+
+# Release 0 #2
+get '/great_job' do
+  if !params[:name]
+    "Good job!"
+  else
+    "Good job, #{params[:name]}!"
+  end
+end
+
+# Release 0 #2
+get '/:num_1/plus/:num_2' do
+  "#{params[:num_1]} plus #{params[:num_2]} is equal to #{params[:num_1].to_i + params[:num_2].to_i}."
+end
 
 # write a GET route that retrieves
 # a particular student
