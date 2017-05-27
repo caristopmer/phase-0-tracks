@@ -37,6 +37,10 @@ get '/students' do
   response
 end
 
+get '/contact' do
+  "Dev Bootcamp<br>123 Fake St.<br>Chicago, IL 60657"
+end  
+
 # write a GET route that retrieves
 # a particular student
 
