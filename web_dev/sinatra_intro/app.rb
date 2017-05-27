@@ -77,3 +77,20 @@ get '/students/younger_than/:age' do
   end
   response
 end
+
+=begin
+  Release 1 Research
+
+  1. Is Sinatra the only web app library in Ruby? What are some others?
+  - No. Sinatra is a micro framework and more of a testing platform. Another framework is Ruby on Rails.
+    This is more of the standard for developing and running real world applications, as it is much more
+    powerful than Sinatra.
+
+
+  2. Are SQLite and the sqlite3 gem your only options for using a database with Sinatra? What are some others?
+  - No. Other options are ActiveRecord and DataMapper.
+
+  3. What is meant by the term web stack?
+  - The term web stack is used to refer to the collection of software needed to create a web application.
+    This includes an operating system, programming language, web server, and database software.
+=end
