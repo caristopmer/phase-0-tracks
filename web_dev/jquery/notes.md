@@ -17,3 +17,7 @@ Find a jQuery cheat sheet on the web to save for reference.
 Dabble around in the codecademy course on jQuery with my remaining time.
 
 * While I feel codecademy isn't the best single resource to learn a new topic, I do like it for review and extra exposure to new concepts.
+
+### After Research:
+
+I felt all of my approaches were pretty effective in learning jQuery. The youtube tutorials were very valuable, I was able to find useful documentation and resources, and a spent a small amount of remaining time getting some light practice with codecademy.
