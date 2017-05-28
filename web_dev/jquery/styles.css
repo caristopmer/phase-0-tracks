@@ -1,10 +1,10 @@
 body {
   background-color: cyan;
+  font-family: helvetica;
   margin: auto;
   max-width: 1000px;
   min-width: 800px;
   text-align: center;
-  font-family: helvetica;
 }
 
 div {
@@ -14,10 +14,10 @@ div {
   display: inline-block;
   height: 150px;
   margin: 10px 100px;
+  opacity: .7;
   padding: 10px;
   text-align: center;
   width: 150px;
-  opacity: .7;
 }
 
 div>p {
